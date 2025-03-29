@@ -9,8 +9,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
-        serif: ["Lora", ...defaultTheme.fontFamily.serif],
+        sans: ["Uncut Sans", ...defaultTheme.fontFamily.sans],
+        sansLight: ["Uncut Sans Light", ...defaultTheme.fontFamily.sans],
+        sansRegular: ["Uncut Sans Regular", ...defaultTheme.fontFamily.sans],
+        sansMedium: ["Uncut Sans Medium", ...defaultTheme.fontFamily.sans],
+        sansSemiBold: ["Uncut Sans SemiBold", ...defaultTheme.fontFamily.sans],
+        sansBold: ["Uncut Sans Bold", ...defaultTheme.fontFamily.sans],
+      },
+      fontWeight: {
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
       },
     },
   },

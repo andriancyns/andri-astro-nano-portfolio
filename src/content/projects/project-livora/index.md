@@ -1,11 +1,15 @@
 ---
-title: "LuxSpace - Modern Furniture E-commerce Platform"
+title: "Livora - Modern Furniture E-commerce Platform"
 description: "Livora is a sophisticated e-commerce web application built with modern web technologies, focusing on furniture and home decor products. The project demonstrates expertise in frontend development using cutting-edge technologies and best practices."
 date: "Feb 3 2025"
 demoURL: "https://livora.netlify.app/"
 ---
 
-![Livora Lighthouse Score](/livora/thumb-livora.png)
+![Livora - Modern Furniture E-commerce Platform](/livora/thumb-livora.png)
+
+> **Status:** ✅ This project is **complete** and **live**.  
+> You can explore the live demo here: <a href="https://livora.netlify.app/" target="_blank" rel="noopener noreferrer">livora.netlify.app</a>
+
 
 Livora is a sophisticated e-commerce web application built with modern web technologies, focusing on furniture and home decor products. The project demonstrates expertise in frontend development using cutting-edge technologies and best practices.
 

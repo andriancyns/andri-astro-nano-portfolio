@@ -7,6 +7,9 @@ demoURL: "https://siaperkara.jiwakreator.com/"
 
 ![LegalSafe](/legalsafe/thumb.png)
 
+> **Status:** ✅ This project is **complete** and **live**.  
+> You can explore the live demo here: <a href="https://siaperkara.jiwakreator.com/" target="_blank" rel="noopener noreferrer">siaperkara.jiwakreator.com</a>
+
 LegalSafe is a modern digital archive management system developed for the Military High Court III Surabaya. This system automates and optimizes the management of case decision archives, improving operational efficiency and public service transparency.
 
 ## 💻 Tech Stack

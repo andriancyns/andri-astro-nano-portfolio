@@ -1,8 +1,9 @@
 ---
-title: "Mobile Legends Win Prediction System using Naive Bayes"
-description: "A machine learning-based prediction system to estimate team win probability in Mobile Legends: Bang Bang"
-date: "Apr 2018"
+title: "Mobile Legends Tournament Platform"
+description: "A web platform for organizing and managing Mobile Legends tournaments."
+date: "2018"
 demoURL: ""
+status: completed
 ---
 
 ![Mobile Legends Win Prediction System](/mobile-legends-thumb.png)

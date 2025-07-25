@@ -3,6 +3,7 @@ title: "SMK Yapalis Krian School Management System"
 description: "Designed and developed a comprehensive school management system for SMK Yapalis Krian Sidoarjo, transforming manual administrative processes into an integrated digital platform. The solution streamlined operations, enhanced data management efficiency, and supported overall academic performance improvement."
 date: "Oct 2021"
 demoURL: "https://smkyapalis-krian.sch.id"
+status: completed
 ---
 
 ![SMK Yapalis Krian School Management System](/screen-smkyapalis.png)

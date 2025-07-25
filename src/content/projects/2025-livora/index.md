@@ -3,6 +3,7 @@ title: "Livora - Modern Furniture E-commerce Platform"
 description: "Livora is a sophisticated e-commerce web application built with modern web technologies, focusing on furniture and home decor products. The project demonstrates expertise in frontend development using cutting-edge technologies and best practices."
 date: "Feb 3 2025"
 demoURL: "https://livora.netlify.app/"
+status: completed
 ---
 
 ![Livora - Modern Furniture E-commerce Platform](/livora/thumb-livora.png)

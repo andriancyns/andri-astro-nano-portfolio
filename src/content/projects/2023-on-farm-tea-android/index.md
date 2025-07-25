@@ -3,6 +3,7 @@ title: "On Farm Tea Module - OSS Planters (Android)"
 description: "The On Farm Tea module is a key part of the OSS Planters Android application, designed to streamline and modernize tea plantation management. I was fully responsible for developing this module from the ground up, handling every stage from initial planning and design to final deployment."
 date: "Nov 2023"
 demoURL: "https://play.google.com/store/apps/details?id=com.ptpn12.oss&hl=en"
+status: completed
 ---
 
 ![On Farm Tea Module - OSS Planters](/on-farm-tea.png)

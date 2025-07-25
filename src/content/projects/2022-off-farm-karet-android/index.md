@@ -3,6 +3,7 @@ title: "Off Farm Karet Module - OSS Planters (Android)"
 description: "The Off Farm Karet module is dedicated to managing and optimizing post-harvest rubber"
 date: "Dec 2022"
 demoURL: "https://play.google.com/store/apps/details?id=com.ptpn12.oss&hl=en"
+status: completed
 ---
 
 ![Off Farm Karet Module - OSS Planters](/off-farm-karet.png)

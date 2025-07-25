@@ -3,6 +3,7 @@ title: "SAPA AMANAH - Compliance Monitoring Application (iOS/Android)"
 description: "SAPA AMANAH is a Flutter-based mobile application I developed for PT Perkebunan Nusantara I, one of Indonesia's largest state-owned plantation enterprises. The application was designed to digitize monitoring and reporting processes in the plantation sector that were previously performed manually, resulting in operational inefficiencies and difficulties in data-driven decision making."
 date: "12 Mar 2025"
 demoURL: ""
+status: in-progress
 ---
 
 ![SAPA AMANAH - Compliance Monitoring Application](/amanah.png)

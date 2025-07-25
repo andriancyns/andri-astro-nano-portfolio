@@ -1,8 +1,9 @@
 ---
-title: "Hoka-Hoka Bento Inventory Management System"
-description: "A comprehensive web-based inventory management system for Hoka-Hoka Bento restaurants in Surabaya, streamlining stock tracking and distribution across multiple locations"
-date: "May 2018"
-demoURL: "https://www.hokben.co.id/login"
+title: "HokBen - Digital Voucher System"
+description: "A digital voucher system for HokBen, a popular Japanese fast food chain in Indonesia."
+date: "2018"
+demoURL: ""
+status: completed
 ---
 
 ![Hoka-Hoka Bento Inventory Management System](/2018-hokben.png)

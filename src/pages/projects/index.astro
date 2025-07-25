@@ -1,13 +1,43 @@
 ---
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import { PROJECTS } from "@consts";
 
+type ProjectEntry = CollectionEntry<"projects">;
+
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  .sort((a, b) => {
+    // Try to parse year from date string or Date object
+    const getYear = (d: string | Date) => {
+      if (typeof d === "string") {
+        const y = d.match(/\d{4}/);
+        return y ? parseInt(y[0]) : 0;
+      }
+      if (d instanceof Date) return d.getFullYear();
+      return 0;
+    };
+    return getYear(b.data.date as string | Date) - getYear(a.data.date as string | Date);
+  });
+
+// Group projects by year only
+const grouped: Record<string, ProjectEntry[]> = {};
+for (const project of projects) {
+  let year = "Unknown";
+  const dateVal = project.data.date as string | Date;
+  if (typeof dateVal === "string") {
+    const y = dateVal.match(/\d{4}/);
+    if (y) year = y[0];
+  } else if (dateVal instanceof Date) {
+    year = String(dateVal.getFullYear());
+  }
+  if (!grouped[year]) grouped[year] = [];
+  grouped[year].push(project);
+}
+const sortedYears = Object.keys(grouped).sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
@@ -16,15 +46,18 @@ const projects = (await getCollection("projects"))
       <div class="animate font-semibold text-black dark:text-white">
         Projects
       </div>
-      <ul class="animate flex flex-col gap-4">
-        {
-          projects.map((project) => (
-            <li>
-              <ArrowCard entry={project}/>
-            </li>
-          ))
-        }
-      </ul>
+      <div class="animate flex flex-col gap-8">
+        {sortedYears.map(year => (
+          <section>
+            <h2 class="text-xl font-bold mb-2">{year}</h2>
+            <ul class="flex flex-col gap-3 mb-4">
+              {grouped[year].map((project) => (
+                <li><ArrowCard entry={project} /></li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
     </div>
   </Container>
 </PageLayout>

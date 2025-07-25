@@ -9,8 +9,8 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "Andrianto Cahyono Putro is a software engineer.",
+  TITLE: "Andrianto Cahyono Putro - Home",
+  DESCRIPTION: "Andrianto Cahyono Putro, Mobile-First Software Engineer specializing in backend (Go/Laravel) and mobile frontend (Flutter & Android). Builds scalable systems.",
 };
 
 export const BLOG: Metadata = {

@@ -10,7 +10,7 @@ export const SITE: Site = {
 
 export const HOME: Metadata = {
   TITLE: "Andrianto Cahyono Putro - Home",
-  DESCRIPTION: "Andrianto Cahyono Putro, Mobile-First Software Engineer specializing in backend (Go/Laravel) and mobile frontend (Flutter & Android). Builds scalable systems.",
+  DESCRIPTION: "Software Engineer specializing in backend (Go/Laravel) and mobile apps frontend (Android Java/Kotlin & Flutter). Builds backend-heavy, scalable, production-ready systems.",
 };
 
 export const BLOG: Metadata = {

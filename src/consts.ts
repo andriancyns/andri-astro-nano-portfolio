@@ -29,9 +29,9 @@ export const PROJECTS: Metadata = {
 };
 
 export const SOCIALS: Socials = [
-  { 
-    NAME: "threads",
-    HREF: "https://twitter.com/andriancyns",
+  {
+    NAME: "instagram",
+    HREF: "https://www.instagram.com/andriancyns",
   },
   { 
     NAME: "github",
@@ -40,5 +40,14 @@ export const SOCIALS: Socials = [
   { 
     NAME: "linkedin",
     HREF: "https://www.linkedin.com/in/andriancyns",
-  }
+  },
+  {
+    NAME: "contra",
+    HREF: "https://andriancyns.contra.com/",
+  },
+  {
+    NAME: "dribbble",
+    HREF: "https://dribbble.com/andriancyns",
+  },
+  
 ];

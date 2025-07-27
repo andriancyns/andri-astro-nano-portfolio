@@ -30,6 +30,10 @@ export const PROJECTS: Metadata = {
 
 export const SOCIALS: Socials = [
   {
+    NAME: "services",
+    HREF: "https://andriancyns.notion.site/Build-Your-App-Fast-Functional-By-Andrian-23ce8a9af6de809db4dcf4b304277201",
+  },
+  {
     NAME: "instagram",
     HREF: "https://www.instagram.com/andriancyns",
   },
@@ -49,5 +53,6 @@ export const SOCIALS: Socials = [
     NAME: "dribbble",
     HREF: "https://dribbble.com/andriancyns",
   },
+ 
   
 ];

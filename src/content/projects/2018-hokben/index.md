@@ -1,5 +1,5 @@
 ---
-title: "HokBen - Digital Voucher System"
+title: "Hoka-Hoka Bento (HokBen) - Inventory Management System"
 description: "A digital voucher system for HokBen, a popular Japanese fast food chain in Indonesia."
 date: "2018"
 demoURL: ""

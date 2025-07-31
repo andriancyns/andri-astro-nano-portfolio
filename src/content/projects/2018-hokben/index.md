@@ -1,6 +1,6 @@
 ---
 title: "Hoka-Hoka Bento (HokBen) - Inventory Management System"
-description: "A digital voucher system for HokBen, a popular Japanese fast food chain in Indonesia."
+description: "A web-based inventory management system for Hoka-Hoka Bento restaurants in Surabaya."
 date: "2018"
 demoURL: ""
 status: completed

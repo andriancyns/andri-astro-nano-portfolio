@@ -4,8 +4,7 @@ description: "Pengalaman pribadi saya membangun backend API dengan cepat dan ama
 date: "Aug 9 2025"
 ---
 
-![Ilustrasi Backend API](backend-api-tools.png)
-
+![Ilustrasi Backend API](https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1740&auto=format&fit=crop)
 ## Waktu Dikejar Deadline? Tools Jadi Penyelamat 🚀
 
 Dulu waktu awal-awal jadi software engineer, bikin backend API itu kerasa kayak maraton tanpa garis finish.  

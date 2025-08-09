@@ -2,9 +2,13 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "strictNullChecks": true,
+    "jsx": "preserve",
+    "parser": "astro-eslint-parser",
     "baseUrl": ".",
     "paths": {
       "@*": ["./src/*"]
-    }
-  }
+    },
+    "types": ["astro/client"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.astro", "src/env.d.ts"]
 }

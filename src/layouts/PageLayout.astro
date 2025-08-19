@@ -10,13 +10,17 @@ type Props = {
   description: string;
   image?: string;
   keywords?: string;
-  structuredDataType?: 'website' | 'person' | 'article';
+  structuredDataType?: 'website' | 'person' | 'article' | 'breadcrumb';
   datePublished?: string | Date;
   dateModified?: string | Date;
   author?: string;
+  readingTime?: string;
+  wordCount?: number;
+  tags?: string[];
+  breadcrumbItems?: Array<{name: string, url: string}>;
 };
 
-const { title, description, image, keywords, structuredDataType = 'website', datePublished, dateModified, author } = Astro.props;
+const { title, description, image, keywords, structuredDataType = 'website', datePublished, dateModified, author, readingTime, wordCount, tags, breadcrumbItems } = Astro.props;
 ---
 
 <!doctype html>
@@ -31,6 +35,10 @@ const { title, description, image, keywords, structuredDataType = 'website', dat
       datePublished={datePublished}
       dateModified={dateModified}
       author={author}
+      readingTime={readingTime}
+      wordCount={wordCount}
+      tags={tags}
+      breadcrumbItems={breadcrumbItems}
     />
   </head>
   <body>

@@ -9,13 +9,13 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Andrianto Cahyono Putro - Home",
+  TITLE: "Andrian Cahyono | Software Engineer | Backend & Mobile Developer",
   DESCRIPTION: "Software Engineer specializing in backend (Go/Laravel) and mobile apps frontend (Android Java/Kotlin & Flutter). Builds backend-heavy, scalable, production-ready systems.",
 };
 
 export const BLOG: Metadata = {
-  TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
+  TITLE: "Blog | Andrian Cahyono - Software Engineering & Tech Insights",
+  DESCRIPTION: "Artikel tentang software engineering, backend development, mobile app development, dan pengalaman teknis dari seorang software engineer.",
 };
 
 export const WORK: Metadata = {
@@ -24,8 +24,8 @@ export const WORK: Metadata = {
 };
 
 export const PROJECTS: Metadata = {
-  TITLE: "Projects",
-  DESCRIPTION: "A collection of my projects, with links to repositories and demos.",
+  TITLE: "Projects | Andrian Cahyono - Portfolio & Case Studies",
+  DESCRIPTION: "Kumpulan project software engineering: web applications, mobile apps, dan sistem backend yang telah saya kembangkan dengan teknologi modern.",
 };
 
 export const SOCIALS: Socials = [

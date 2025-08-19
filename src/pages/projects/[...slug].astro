@@ -20,9 +20,20 @@ type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
 const { Content } = await project.render();
+
+// Breadcrumb items for project
+const breadcrumbItems = [
+  { name: "Home", url: "/" },
+  { name: "Projects", url: "/projects" },
+  { name: project.data.title, url: `/projects/${project.slug}` }
+];
 ---
 
-<PageLayout title={project.data.title} description={project.data.description}>
+<PageLayout 
+  title={`${project.data.title} | Portfolio Andrian Cahyono`} 
+  description={project.data.description}
+  breadcrumbItems={breadcrumbItems}
+>
   <Container>
     <div class="animate">
       <BackToPrev href="/projects">

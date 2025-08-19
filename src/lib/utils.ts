@@ -20,6 +20,18 @@ export function readingTime(html: string) {
   return `${readingTimeMinutes} min read`;
 }
 
+export function getWordCount(html: string): number {
+  const textOnly = html.replace(/<[^>]+>/g, "");
+  return textOnly.split(/\s+/).length;
+}
+
+export function getReadingTimeMinutes(html: string): string {
+  const textOnly = html.replace(/<[^>]+>/g, "");
+  const wordCount = textOnly.split(/\s+/).length;
+  const minutes = Math.ceil(wordCount / 200);
+  return `PT${minutes}M`; // ISO 8601 duration format for schema
+}
+
 export function dateRange(startDate: Date, endDate?: Date | string): string {
   const startMonth = startDate.toLocaleString("default", { month: "short" });
   const startYear = startDate.getFullYear().toString();

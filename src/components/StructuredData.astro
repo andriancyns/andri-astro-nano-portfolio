@@ -1,6 +1,6 @@
 ---
 interface Props {
-  type: 'website' | 'person' | 'article';
+  type: 'website' | 'person' | 'article' | 'breadcrumb';
   title?: string;
   description?: string;
   url?: string;
@@ -8,9 +8,13 @@ interface Props {
   datePublished?: string | Date;
   dateModified?: string | Date;
   author?: string;
+  readingTime?: string;
+  wordCount?: number;
+  tags?: string[];
+  breadcrumbItems?: Array<{name: string, url: string}>;
 }
 
-const { type, title, description, url, image, datePublished, dateModified, author } = Astro.props;
+const { type, title, description, url, image, datePublished, dateModified, author, readingTime, wordCount, tags, breadcrumbItems } = Astro.props;
 
 const siteUrl = Astro.site?.href || 'https://cyns.space';
 const currentUrl = new URL(Astro.url.pathname, siteUrl).href;
@@ -80,7 +84,8 @@ if (type === 'website') {
     "author": {
       "@type": "Person",
       "name": author || "Andrianto Cahyono Putro",
-      "url": siteUrl
+      "url": siteUrl,
+      "jobTitle": "Software Engineer"
     },
     "publisher": {
       "@type": "Person",
@@ -90,7 +95,8 @@ if (type === 'website') {
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": currentUrl
-    }
+    },
+    "inLanguage": "id-ID"
   };
 
   if (image) {
@@ -99,7 +105,50 @@ if (type === 'website') {
       "url": new URL(image, siteUrl).href
     };
   }
+
+  if (readingTime) {
+    structuredData.timeRequired = readingTime;
+  }
+
+  if (wordCount) {
+    structuredData.wordCount = wordCount;
+  }
+
+  if (tags && tags.length > 0) {
+    structuredData.keywords = tags.join(", ");
+    structuredData.about = tags.map(tag => ({
+      "@type": "Thing",
+      "name": tag
+    }));
+  }
+} else if (type === 'breadcrumb' && breadcrumbItems) {
+  structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbItems.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": new URL(item.url, siteUrl).href
+    }))
+  };
 }
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+{structuredData && Object.keys(structuredData).length > 0 && (
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+)}
+
+{/* Add breadcrumb schema separately if it's an article or project page */}
+{(type === 'article') && breadcrumbItems && (
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbItems.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": new URL(item.url, siteUrl).href
+    }))
+  })} />
+)}

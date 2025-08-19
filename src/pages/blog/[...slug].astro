@@ -23,7 +23,15 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<PageLayout title={post.data.title} description={post.data.description} image={post.data.image ?? "/astro-nano.png"}>
+<PageLayout 
+  title={post.data.title} 
+  description={post.data.description} 
+  image={post.data.image ?? "/astro-nano.png"}
+  structuredDataType="article"
+  datePublished={post.data.date}
+  dateModified={post.data.date}
+  author="Andrianto Cahyono Putro"
+>
   <Container>
     <div class="animate">
       <BackToPrev href="/blog">

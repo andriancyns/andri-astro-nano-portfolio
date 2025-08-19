@@ -2,21 +2,36 @@
 import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import StructuredData from "@components/StructuredData.astro";
 
 
 type Props = {
   title: string;
   description: string;
   image?: string;
+  keywords?: string;
+  structuredDataType?: 'website' | 'person' | 'article';
+  datePublished?: string | Date;
+  dateModified?: string | Date;
+  author?: string;
 };
 
-const { title, description, image } = Astro.props;
+const { title, description, image, keywords, structuredDataType = 'website', datePublished, dateModified, author } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
-    <Head title={title} description={description} image={image} />
+    <Head title={title} description={description} image={image} keywords={keywords} />
+    <StructuredData 
+      type={structuredDataType} 
+      title={title} 
+      description={description} 
+      image={image}
+      datePublished={datePublished}
+      dateModified={dateModified}
+      author={author}
+    />
   </head>
   <body>
     <Header />

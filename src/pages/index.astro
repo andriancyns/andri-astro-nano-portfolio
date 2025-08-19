@@ -20,7 +20,12 @@ const projects = (await getCollection("projects"))
 
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="wW4EfvW+aSyPA3huUIMvXQ" async></script>
 
-<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+<PageLayout 
+  title={HOME.TITLE} 
+  description={HOME.DESCRIPTION} 
+  structuredDataType="person"
+  keywords="software engineer, backend developer, mobile developer, go, golang, laravel, php, android, flutter, freelancer, indonesia"
+>
   <Container>
     <h4 class="animate font-semibold text-black dark:text-white" {...{ 'data-testid': 'heading' }}>
       Hi, I'm Andrian

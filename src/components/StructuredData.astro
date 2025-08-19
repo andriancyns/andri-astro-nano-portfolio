@@ -1,0 +1,105 @@
+---
+interface Props {
+  type: 'website' | 'person' | 'article';
+  title?: string;
+  description?: string;
+  url?: string;
+  image?: string;
+  datePublished?: string | Date;
+  dateModified?: string | Date;
+  author?: string;
+}
+
+const { type, title, description, url, image, datePublished, dateModified, author } = Astro.props;
+
+const siteUrl = Astro.site?.href || 'https://cyns.space';
+const currentUrl = new URL(Astro.url.pathname, siteUrl).href;
+
+let structuredData = {};
+
+if (type === 'website') {
+  structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Andrianto Cahyono Putro",
+    "alternateName": "Andrian",
+    "url": siteUrl,
+    "description": description || "Software Engineer specializing in backend (Go/Laravel) and mobile apps frontend (Android Java/Kotlin & Flutter). Builds backend-heavy, scalable, production-ready systems.",
+    "author": {
+      "@type": "Person",
+      "name": "Andrianto Cahyono Putro",
+      "alternateName": "Andrian",
+      "url": siteUrl,
+      "jobTitle": "Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelancer"
+      },
+      "knowsAbout": ["Software Engineering", "Backend Development", "Mobile Development", "Go", "Laravel", "Android", "Flutter"],
+      "sameAs": [
+        "https://github.com/andriancyns",
+        "https://www.linkedin.com/in/andriancyns",
+        "https://www.instagram.com/andriancyns",
+        "https://dribbble.com/andriancyns",
+        "https://andriancyns.contra.com/"
+      ]
+    }
+  };
+} else if (type === 'person') {
+  structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Andrianto Cahyono Putro",
+    "alternateName": "Andrian",
+    "url": siteUrl,
+    "image": image || `${siteUrl}/astro-nano.png`,
+    "jobTitle": "Software Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Freelancer"
+    },
+    "knowsAbout": ["Software Engineering", "Backend Development", "Mobile Development", "Go", "Laravel", "Android", "Flutter"],
+    "sameAs": [
+      "https://github.com/andriancyns",
+      "https://www.linkedin.com/in/andriancyns",
+      "https://www.instagram.com/andriancyns",
+      "https://dribbble.com/andriancyns",
+      "https://andriancyns.contra.com/"
+    ],
+    "email": "andriancyns@gmail.com"
+  };
+} else if (type === 'article') {
+  structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "url": currentUrl,
+    "datePublished": datePublished,
+    "dateModified": dateModified || datePublished,
+    "author": {
+      "@type": "Person",
+      "name": author || "Andrianto Cahyono Putro",
+      "url": siteUrl
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Andrianto Cahyono Putro",
+      "url": siteUrl
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": currentUrl
+    }
+  };
+
+  if (image) {
+    structuredData.image = {
+      "@type": "ImageObject",
+      "url": new URL(image, siteUrl).href
+    };
+  }
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

@@ -1,4 +1,4 @@
-import { type Language, defaultLang, fallbackLang } from '../i18n';
+import { type Language, defaultLang } from '../i18n';
 
 export function detectUserLanguage(): Language {
   if (typeof window === 'undefined') return defaultLang;

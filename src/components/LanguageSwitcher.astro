@@ -1,5 +1,5 @@
 ---
-import { languages, type Language, defaultLang } from '../i18n';
+import { languages, type Language } from '../i18n';
 
 interface Props {
   currentLang: Language;
@@ -14,7 +14,7 @@ const { currentLang } = Astro.props;
     class="bg-transparent text-sm border-none outline-none cursor-pointer"
     value={currentLang}
   >
-    {Object.entries(languages).map(([code, name]) => (
+    {Object.entries(languages).map(([code]) => (
       <option value={code} selected={code === currentLang}>
         {code.toUpperCase()}
       </option>

@@ -11,7 +11,7 @@ const { slug, initialViews = 0 } = Astro.props;
   <span id={`views-${slug}`}>{initialViews}</span> views
 </div>
 
-<script define:vars={{ slug }}>
+<script is:inline define:vars={{ slug }}>
   function getLocalViews(slug) {
     if (typeof localStorage !== 'undefined') {
       const storageKey = `blog-views-${slug}`;
@@ -44,7 +44,7 @@ const { slug, initialViews = 0 } = Astro.props;
 
   if (!hasViewedInSession) {
     // Increment view count
-    const newViews = incrementView(slug);
+    incrementView(slug);
     
     // Mark as viewed in this session
     sessionStorage.setItem(sessionKey, 'true');

@@ -1,6 +1,7 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
-import { HOME } from "@consts";
+import { getHomeMetadata } from "@consts";
+import { defaultLang } from "../i18n";
 
 type Context = {
   site: string
@@ -15,6 +16,8 @@ export async function GET(context: Context) {
 
   const items = [...blog, ...projects]
     .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+
+  const HOME = getHomeMetadata(defaultLang);
 
   return rss({
     title: HOME.TITLE,

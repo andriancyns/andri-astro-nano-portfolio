@@ -14,7 +14,7 @@ interface Props {
   breadcrumbItems?: Array<{name: string, url: string}>;
 }
 
-const { type, title, description, url, image, datePublished, dateModified, author, readingTime, wordCount, tags, breadcrumbItems } = Astro.props;
+const { type, title, description, image, datePublished, dateModified, author, readingTime, wordCount, tags, breadcrumbItems } = Astro.props;
 
 const siteUrl = Astro.site?.href || 'https://cyns.space';
 const currentUrl = new URL(Astro.url.pathname, siteUrl).href;
@@ -73,7 +73,7 @@ if (type === 'website') {
     "email": "andriancyns@gmail.com"
   };
 } else if (type === 'article') {
-  structuredData = {
+  const articleData: any = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": title,
@@ -100,27 +100,29 @@ if (type === 'website') {
   };
 
   if (image) {
-    structuredData.image = {
+    articleData.image = {
       "@type": "ImageObject",
       "url": new URL(image, siteUrl).href
     };
   }
 
   if (readingTime) {
-    structuredData.timeRequired = readingTime;
+    articleData.timeRequired = readingTime;
   }
 
   if (wordCount) {
-    structuredData.wordCount = wordCount;
+    articleData.wordCount = wordCount;
   }
 
   if (tags && tags.length > 0) {
-    structuredData.keywords = tags.join(", ");
-    structuredData.about = tags.map(tag => ({
+    articleData.keywords = tags.join(", ");
+    articleData.about = tags.map(tag => ({
       "@type": "Thing",
       "name": tag
     }));
   }
+
+  structuredData = articleData;
 } else if (type === 'breadcrumb' && breadcrumbItems) {
   structuredData = {
     "@context": "https://schema.org",
@@ -136,12 +138,12 @@ if (type === 'website') {
 ---
 
 {structuredData && Object.keys(structuredData).length > 0 && (
-  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 )}
 
 {/* Add breadcrumb schema separately if it's an article or project page */}
 {(type === 'article') && breadcrumbItems && (
-  <script type="application/ld+json" set:html={JSON.stringify({
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": breadcrumbItems.map((item, index) => ({

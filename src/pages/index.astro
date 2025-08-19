@@ -92,7 +92,7 @@ const projects = (await getCollection("projects"))
         <ul class="flex flex-col gap-4">
           {projects.map(project => (
             <li>
-              <ArrowCard entry={project} />
+              <ArrowCard entry={project} lang={currentLang} />
             </li>
           ))}
         </ul>
@@ -111,7 +111,7 @@ const projects = (await getCollection("projects"))
         <ul class="flex flex-col gap-4">
           {blog.map(post => (
             <li>
-              <ArrowCard entry={post} />
+              <ArrowCard entry={post} lang={currentLang} />
             </li>
           ))}
         </ul>

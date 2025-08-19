@@ -22,15 +22,55 @@ const { currentLang } = Astro.props;
   </select>
 </div>
 
-<script>
-  import { redirectToLanguage } from '../lib/language';
+<script is:inline>
+  function saveLanguagePreference(lang) {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('preferred-language', lang);
+    }
+  }
+
+  function getLanguageFromURL() {
+    if (typeof window === 'undefined') return null;
+    
+    const path = window.location.pathname;
+    const segments = path.split('/').filter(Boolean);
+    
+    if (segments.length > 0 && ['en', 'id'].includes(segments[0])) {
+      return segments[0];
+    }
+    
+    return null;
+  }
+
+  function redirectToLanguage(targetLang) {
+    if (typeof window === 'undefined') return;
+    
+    const currentPath = window.location.pathname;
+    const currentLang = getLanguageFromURL();
+    
+    let newPath = currentPath;
+    
+    if (currentLang) {
+      // Remove current language from path
+      newPath = currentPath.replace(`/${currentLang}`, '') || '/';
+    }
+    
+    // Add new language prefix (except for default language)
+    if (targetLang !== 'id') {
+      newPath = `/${targetLang}${newPath}`;
+    }
+    
+    // Save preference and redirect
+    saveLanguagePreference(targetLang);
+    window.location.href = newPath;
+  }
   
-  const languageSelect = document.getElementById('language-select') as HTMLSelectElement;
+  const languageSelect = document.getElementById('language-select');
   
   if (languageSelect) {
     languageSelect.addEventListener('change', (e) => {
-      const target = e.target as HTMLSelectElement;
-      const newLang = target.value as 'en' | 'id';
+      const target = e.target;
+      const newLang = target.value;
       redirectToLanguage(newLang);
     });
   }

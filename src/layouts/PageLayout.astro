@@ -51,8 +51,46 @@ const { title, description, image, keywords, structuredDataType = 'website', dat
     <Footer />
     
     <!-- Language detection and auto-redirect script -->
-    <script>
-      import { detectUserLanguage, saveLanguagePreference, getLanguageFromURL } from '../lib/language';
+    <script is:inline>
+      function detectUserLanguage() {
+        if (typeof window === 'undefined') return 'id';
+        
+        // Check localStorage first
+        const savedLang = localStorage.getItem('preferred-language');
+        if (savedLang && ['en', 'id'].includes(savedLang)) {
+          return savedLang;
+        }
+        
+        // Check browser language
+        const browserLang = navigator.language.toLowerCase();
+        
+        // Indonesian language detection
+        if (browserLang.includes('id') || browserLang.includes('indonesia')) {
+          return 'id';
+        }
+        
+        // Default to English for all other languages
+        return 'en';
+      }
+
+      function saveLanguagePreference(lang) {
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('preferred-language', lang);
+        }
+      }
+
+      function getLanguageFromURL() {
+        if (typeof window === 'undefined') return null;
+        
+        const path = window.location.pathname;
+        const segments = path.split('/').filter(Boolean);
+        
+        if (segments.length > 0 && ['en', 'id'].includes(segments[0])) {
+          return segments[0];
+        }
+        
+        return null;
+      }
       
       // Only run on first visit to detect language
       document.addEventListener('DOMContentLoaded', () => {
@@ -63,8 +101,13 @@ const { title, description, image, keywords, structuredDataType = 'website', dat
         if (!urlLang && detectedLang !== 'id') {
           // Save preference and redirect to English version
           saveLanguagePreference(detectedLang);
-          if (detectedLang === 'en' && window.location.pathname === '/') {
-            window.location.href = '/en/';
+          const currentPath = window.location.pathname;
+          
+          // Redirect to English version for any page
+          if (detectedLang === 'en') {
+            // Add /en prefix to current path
+            const newPath = '/en' + (currentPath === '/' ? '/' : currentPath);
+            window.location.href = newPath;
           }
         }
       });

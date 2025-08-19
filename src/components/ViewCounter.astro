@@ -1,0 +1,60 @@
+---
+interface Props {
+  slug: string;
+  initialViews?: number;
+}
+
+const { slug, initialViews = 0 } = Astro.props;
+---
+
+<div class="view-counter text-sm opacity-75">
+  <span id={`views-${slug}`}>{initialViews}</span> views
+</div>
+
+<script define:vars={{ slug }}>
+  function getLocalViews(slug) {
+    if (typeof localStorage !== 'undefined') {
+      const storageKey = `blog-views-${slug}`;
+      return parseInt(localStorage.getItem(storageKey) || '0');
+    }
+    return 0;
+  }
+
+  function incrementView(slug) {
+    if (typeof localStorage !== 'undefined') {
+      const storageKey = `blog-views-${slug}`;
+      const currentViews = parseInt(localStorage.getItem(storageKey) || '0');
+      const newViews = currentViews + 1;
+      localStorage.setItem(storageKey, newViews.toString());
+      return newViews;
+    }
+    return 0;
+  }
+
+  function updateViewDisplay(slug, views) {
+    const element = document.getElementById(`views-${slug}`);
+    if (element) {
+      element.textContent = views.toString();
+    }
+  }
+
+  // Check if user has already viewed this post in this session
+  const sessionKey = `blog-session-${slug}`;
+  const hasViewedInSession = sessionStorage.getItem(sessionKey);
+
+  if (!hasViewedInSession) {
+    // Increment view count
+    const newViews = incrementView(slug);
+    
+    // Mark as viewed in this session
+    sessionStorage.setItem(sessionKey, 'true');
+    
+    // Update display
+    const localViews = getLocalViews(slug);
+    updateViewDisplay(slug, localViews);
+  } else {
+    // Just show current count
+    const localViews = getLocalViews(slug);
+    updateViewDisplay(slug, localViews);
+  }
+</script>

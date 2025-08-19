@@ -1,0 +1,48 @@
+---
+import { languages, type Language, defaultLang } from '../i18n';
+
+interface Props {
+  currentLang: Language;
+}
+
+const { currentLang } = Astro.props;
+---
+
+<div class="language-switcher">
+  <select 
+    id="language-select" 
+    class="bg-transparent text-sm border-none outline-none cursor-pointer"
+    value={currentLang}
+  >
+    {Object.entries(languages).map(([code, name]) => (
+      <option value={code} selected={code === currentLang}>
+        {code.toUpperCase()}
+      </option>
+    ))}
+  </select>
+</div>
+
+<script>
+  import { redirectToLanguage } from '../lib/language';
+  
+  const languageSelect = document.getElementById('language-select') as HTMLSelectElement;
+  
+  if (languageSelect) {
+    languageSelect.addEventListener('change', (e) => {
+      const target = e.target as HTMLSelectElement;
+      const newLang = target.value as 'en' | 'id';
+      redirectToLanguage(newLang);
+    });
+  }
+</script>
+
+<style>
+  .language-switcher select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.25rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    padding-right: 1.5rem;
+  }
+</style>

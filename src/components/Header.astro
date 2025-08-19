@@ -1,7 +1,16 @@
 ---
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
+import LanguageSwitcher from "@components/LanguageSwitcher.astro";
 import { SITE } from "@consts";
+import { useTranslations, defaultLang, type Language } from "../i18n";
+
+interface Props {
+  currentLang?: Language;
+}
+
+const { currentLang = defaultLang } = Astro.props;
+const t = useTranslations(currentLang);
 ---
 
 <header>
@@ -12,22 +21,20 @@ import { SITE } from "@consts";
           {SITE.NAME}
         </div>
       </Link>
-      <nav class="flex gap-1">
+      <nav class="flex gap-1 items-center">
         <Link href="/blog">
-          blog
+          {t('nav.blog')}
         </Link>
         <span>
           {`/`}
         </span>
-        <!-- <Link href="/work">
-          work
-        </Link>
-        <span>
-          {`/`}
-        </span> -->
         <Link href="/projects">
-          projects
+          {t('nav.projects')}
         </Link>
+        <span class="mx-2">
+          |
+        </span>
+        <LanguageSwitcher currentLang={currentLang} />
       </nav>
     </div>
   </Container>

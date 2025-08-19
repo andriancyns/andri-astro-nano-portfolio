@@ -2,6 +2,8 @@
 title: "Apa itu Software Engineer? Versi Gue"
 description: "Saya seorang Software Engineer, kerjaan saya ngoding, debugging, dan ngebangun sistem."
 date: "Jul 25 2025"
+titleEn: "What is a Software Engineer? My Version"
+descriptionEn: "I'm a Software Engineer, my job involves coding, debugging, and building systems."
 ---
 
 ![Software engineer working on laptop with code editor, representing the daily work of a software developer building applications and solving technical problems](software-engineer.png)

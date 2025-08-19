@@ -1,5 +1,5 @@
 ---
-import GiscusComments from '../../components/GiscusComments.astro';
+import GiscusComments from '../../../components/GiscusComments.astro';
 import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
@@ -8,8 +8,8 @@ import { readingTime, getWordCount, getReadingTimeMinutes } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import ViewCounter from "@components/ViewCounter.astro";
 import BlogContent from "@components/BlogContent.astro";
-import { getTitleByLang, getDescriptionByLang } from "../../lib/translations";
-import { defaultLang, type Language } from "../../i18n";
+import { getTitleByLang, getDescriptionByLang } from "../../../lib/translations";
+import { type Language } from "../../../i18n";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -29,17 +29,17 @@ const { Content } = await post.render();
 const tags = post.data.tags || [];
 const wordCount = getWordCount(post.body);
 const readingTimeDuration = getReadingTimeMinutes(post.body);
-const currentLang: Language = defaultLang;
+const currentLang: Language = 'en';
 
 // Get translated title and description
-const displayTitle = getTitleByLang(post.slug, currentLang, post.data.title);
-const displayDescription = getDescriptionByLang(post.slug, currentLang, post.data.description);
+const displayTitle = getTitleByLang(post.slug, currentLang, post.data.titleEn || post.data.title);
+const displayDescription = getDescriptionByLang(post.slug, currentLang, post.data.descriptionEn || post.data.description);
 
 // Breadcrumb items for blog post
 const breadcrumbItems = [
-  { name: "Home", url: "/" },
-  { name: "Blog", url: "/blog" },
-  { name: displayTitle, url: `/blog/${post.slug}` }
+  { name: "Home", url: "/en/" },
+  { name: "Blog", url: "/en/blog" },
+  { name: displayTitle, url: `/en/blog/${post.slug}` }
 ];
 ---
 
@@ -55,10 +55,11 @@ const breadcrumbItems = [
   wordCount={wordCount}
   tags={tags}
   breadcrumbItems={breadcrumbItems}
+  currentLang={currentLang}
 >
   <Container>
     <div class="animate">
-      <BackToPrev href="/blog">
+      <BackToPrev href="/en/blog">
         Back to blog
       </BackToPrev>
     </div>

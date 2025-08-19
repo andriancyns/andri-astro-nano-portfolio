@@ -3,21 +3,21 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
-import { getBlogMetadata } from "@consts";
-import { defaultLang, type Language } from "../../i18n";
+import { getProjectsMetadata } from "@consts";
+import { type Language } from "../../../i18n";
 
-const currentLang: Language = defaultLang;
-const BLOG = getBlogMetadata(currentLang);
+const currentLang: Language = 'en';
+const PROJECTS = getProjectsMetadata(currentLang);
 
-const data = (await getCollection("blog"))
+const data = (await getCollection("projects"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   
 type Acc = {
-  [year: string]: CollectionEntry<"blog">[];
+  [year: string]: CollectionEntry<"projects">[];
 }
 
-const posts = data.reduce((acc: Acc, post) => {
+const projects = data.reduce((acc: Acc, post) => {
     const year = post.data.date.getFullYear().toString();
     if (!acc[year]) {
       acc[year] = [];
@@ -26,19 +26,18 @@ const posts = data.reduce((acc: Acc, post) => {
     return acc;
   }, {});
 
-const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a)); 
+const years = Object.keys(projects).sort((a, b) => parseInt(b) - parseInt(a)); 
 ---
 
 <PageLayout 
-  title={BLOG.TITLE} 
-  description={BLOG.DESCRIPTION}
-  keywords="blog, artikel, software engineering, programming, tutorial, tips, pengalaman"
+  title={PROJECTS.TITLE} 
+  description={PROJECTS.DESCRIPTION}
   currentLang={currentLang}
 >
   <Container>
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">
-        Blog
+        Projects
       </div>
       <div class="space-y-4">
         {years.map(year => (
@@ -49,9 +48,9 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
             <div>
               <ul class="flex flex-col gap-4">
                 {
-                  posts[year].map((post) => (
+                  projects[year].map((project) => (
                     <li>
-                      <ArrowCard entry={post}/>
+                      <ArrowCard entry={project} lang={currentLang} basePath="/en"/>
                     </li>
                   ))
                 }

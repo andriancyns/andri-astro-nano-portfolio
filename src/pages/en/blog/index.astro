@@ -4,9 +4,9 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import { getBlogMetadata } from "@consts";
-import { defaultLang, type Language } from "../../i18n";
+import { type Language } from "../../../i18n";
 
-const currentLang: Language = defaultLang;
+const currentLang: Language = 'en';
 const BLOG = getBlogMetadata(currentLang);
 
 const data = (await getCollection("blog"))
@@ -32,7 +32,7 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
 <PageLayout 
   title={BLOG.TITLE} 
   description={BLOG.DESCRIPTION}
-  keywords="blog, artikel, software engineering, programming, tutorial, tips, pengalaman"
+  keywords="blog, articles, software engineering, programming, tutorial, tips, experience"
   currentLang={currentLang}
 >
   <Container>
@@ -51,7 +51,7 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
                 {
                   posts[year].map((post) => (
                     <li>
-                      <ArrowCard entry={post}/>
+                      <ArrowCard entry={post} lang={currentLang} basePath="/en"/>
                     </li>
                   ))
                 }

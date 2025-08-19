@@ -3,6 +3,7 @@ import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import StructuredData from "@components/StructuredData.astro";
+import { type Language, defaultLang } from "../i18n";
 
 
 type Props = {
@@ -18,13 +19,14 @@ type Props = {
   wordCount?: number;
   tags?: string[];
   breadcrumbItems?: Array<{name: string, url: string}>;
+  currentLang?: Language;
 };
 
-const { title, description, image, keywords, structuredDataType = 'website', datePublished, dateModified, author, readingTime, wordCount, tags, breadcrumbItems } = Astro.props;
+const { title, description, image, keywords, structuredDataType = 'website', datePublished, dateModified, author, readingTime, wordCount, tags, breadcrumbItems, currentLang = defaultLang } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="id">
+<html lang={currentLang}>
   <head>
     <Head title={title} description={description} image={image} keywords={keywords} />
     <StructuredData 
@@ -42,10 +44,30 @@ const { title, description, image, keywords, structuredDataType = 'website', dat
     />
   </head>
   <body>
-    <Header />
+    <Header currentLang={currentLang} />
     <main>
       <slot />
     </main>
     <Footer />
+    
+    <!-- Language detection and auto-redirect script -->
+    <script>
+      import { detectUserLanguage, saveLanguagePreference, getLanguageFromURL } from '../lib/language';
+      
+      // Only run on first visit to detect language
+      document.addEventListener('DOMContentLoaded', () => {
+        const urlLang = getLanguageFromURL();
+        const detectedLang = detectUserLanguage();
+        
+        // If no language in URL and detected language is different from default
+        if (!urlLang && detectedLang !== 'id') {
+          // Save preference and redirect to English version
+          saveLanguagePreference(detectedLang);
+          if (detectedLang === 'en' && window.location.pathname === '/') {
+            window.location.href = '/en/';
+          }
+        }
+      });
+    </script>
   </body>
 </html>

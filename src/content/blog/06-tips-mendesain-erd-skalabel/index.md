@@ -5,6 +5,8 @@ description: "Pengalaman saya mendesain Entity Relationship Diagram (ERD) yang s
 date: "Aug 17 2025"
 tags: ["Database Design", "ERD", "Backend Development", "System Design", "Scalable System"]
 keywords: ["tips mendesain erd", "cara membuat erd yang scalable", "entity relationship diagram", "desain database", "erd proyek nyata"]
+titleEn: "3 Tips for Designing Scalable ERDs from Real Project Experience"
+descriptionEn: "My experience designing scalable Entity Relationship Diagrams (ERDs) for real projects, complete with 3 practical tips to keep your database clean and ready to grow."
 ---
 
 ![Diagram ERD database yang skalabel menunjukkan tabel-tabel yang terhubung dengan relasi yang efisien untuk pengembangan sistem yang mudah dipelihara](erd-design.png)

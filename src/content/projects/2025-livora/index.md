@@ -6,7 +6,7 @@ demoURL: "https://livora.netlify.app/"
 status: completed
 ---
 
-![Livora - Modern Furniture E-commerce Platform](/livora/thumb-livora.png)
+![Livora modern furniture e-commerce website homepage showing elegant furniture products with clean design and user-friendly navigation](/livora/thumb-livora.png)
 
 > **Status:** ✅ This project is **complete** and **live**.  
 > You can explore the live demo here: <a href="https://livora.netlify.app/" target="_blank" rel="noopener noreferrer">livora.netlify.app</a>
@@ -28,7 +28,7 @@ Livora is a sophisticated e-commerce web application built with modern web techn
 - **Developer Experience**: ESLint, modern JavaScript, type checking
 
 ## 💯 Lighthouse score
-![Livora Lighthouse Score](/livora/lighthouse.png)
+![Livora website Lighthouse performance audit showing 100% scores for performance, accessibility, best practices and SEO](/livora/lighthouse.png)
 
 ## 📝 Project Metrics
 - Timeline: 1 Month

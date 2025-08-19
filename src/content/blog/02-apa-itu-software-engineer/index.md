@@ -4,7 +4,7 @@ description: "Saya seorang Software Engineer, kerjaan saya ngoding, debugging, d
 date: "Jul 25 2025"
 ---
 
-![Ilustrasi Software Engineer](software-engineer.png)
+![Software engineer working on laptop with code editor, representing the daily work of a software developer building applications and solving technical problems](software-engineer.png)
 
 ## Apa Sih Software Engineer Itu? (Versi Gue)
 

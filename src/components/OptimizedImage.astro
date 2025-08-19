@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  quality?: number;
+}
+
+const { 
+  src, 
+  alt, 
+  width = 800, 
+  height = 400, 
+  class: className = '', 
+  loading = 'lazy',
+  quality = 80 
+} = Astro.props;
+
+// Check if image is from public directory or imported
+let imageSrc = src;
+if (!src.startsWith('/') && !src.startsWith('http')) {
+  // Handle relative imports from content collections
+  imageSrc = `/src/content/${src}`;
+}
+---
+
+{src.startsWith('http') ? (
+  <img 
+    src={src} 
+    alt={alt} 
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+  />
+) : (
+  <Image 
+    src={imageSrc}
+    alt={alt} 
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+    quality={quality}
+    format="webp"
+  />
+)}

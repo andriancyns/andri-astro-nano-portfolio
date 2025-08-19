@@ -6,7 +6,7 @@ demoURL: "https://bytenova.vercel.app/"
 status: completed
 ---
 
-![Bytenova](/bytenova/thumb.png)
+![Bytenova green energy solutions website landing page featuring sustainable energy services and modern eco-friendly design](/bytenova/thumb.png)
 
 > **Status:** ✅ This project is **complete** and **live**.  
 > You can explore the live demo here: <a href="https://bytenova.vercel.app/" target="_blank" rel="noopener noreferrer">bytenova.vercel.app</a>

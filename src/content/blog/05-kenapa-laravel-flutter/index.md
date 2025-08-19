@@ -7,7 +7,7 @@ tags: ["Laravel", "Flutter", "Fullstack Development", "Mobile App", "Backend API
 keywords: ["laravel flutter", "kenapa pilih laravel", "kenapa pilih flutter", "membangun aplikasi dari nol", "laravel untuk backend", "flutter untuk mobile"]
 ---
 
-![Ilustrasi Laravel dan Flutter](laravel-flutter-illustration.png)
+![Ilustrasi kombinasi Laravel sebagai backend framework dan Flutter untuk mobile app development, menunjukkan ekosistem fullstack modern](laravel-flutter-illustration.png)
 
 ## Suka Duka Bangun Aplikasi dari Nol 🏗️
 

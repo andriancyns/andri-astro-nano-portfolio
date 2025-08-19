@@ -7,7 +7,7 @@ tags: ["Database Design", "ERD", "Backend Development", "System Design", "Scalab
 keywords: ["tips mendesain erd", "cara membuat erd yang scalable", "entity relationship diagram", "desain database", "erd proyek nyata"]
 ---
 
-![Ilustrasi ERD Database](erd-design.png)
+![Diagram ERD database yang skalabel menunjukkan tabel-tabel yang terhubung dengan relasi yang efisien untuk pengembangan sistem yang mudah dipelihara](erd-design.png)
 
 ## Awalnya Semua Terlihat Sederhana... Sampai Client Minta Tambahan 😅
 

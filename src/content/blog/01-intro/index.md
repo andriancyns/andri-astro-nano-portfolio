@@ -1,7 +1,7 @@
 ---
 title: "Mari Kita Mulai"
 description: "Ini tulisan pertama saya. Nggak muluk-muluk. Nggak ada gimmick. Cuma ingin mulai aja."
-date: "Jul 25 2025"
+date: "Jul 24 2025"
 titleEn: "Let's Get Started"
 descriptionEn: "This is my first post. Nothing fancy. No gimmicks. Just want to get started."
 ---

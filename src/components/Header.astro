@@ -1,40 +1,27 @@
 ---
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
-import LanguageSwitcher from "@components/LanguageSwitcher.astro";
 import { SITE } from "@consts";
-import { useTranslations, defaultLang, type Language } from "../i18n";
-
-interface Props {
-  currentLang?: Language;
-}
-
-const { currentLang = defaultLang } = Astro.props;
-const t = useTranslations(currentLang);
 ---
 
 <header>
   <Container>
     <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href={currentLang === 'en' ? '/en/' : '/'} underline={false}>
+      <Link href="/" underline={false}>
         <div class="font-semibold">
           {SITE.NAME}
         </div>
       </Link>
       <nav class="flex gap-1 items-center">
-        <Link href={currentLang === 'en' ? '/en/blog' : '/blog'}>
-          {t('nav.blog')}
+        <Link href="/blog">
+          Blog
         </Link>
         <span>
           {`/`}
         </span>
-        <Link href={currentLang === 'en' ? '/en/projects' : '/projects'}>
-          {t('nav.projects')}
+        <Link href="/projects">
+          Projects
         </Link>
-        <span class="mx-2">
-          |
-        </span>
-        <LanguageSwitcher currentLang={currentLang} />
       </nav>
     </div>
   </Container>

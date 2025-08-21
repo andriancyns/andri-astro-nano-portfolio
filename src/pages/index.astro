@@ -4,13 +4,7 @@ import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
-import { SITE, getHomeMetadata, SOCIALS } from "@consts";
-import { useTranslations, defaultLang, type Language } from "../i18n";
-
-// Auto-detect language from URL or use default
-const currentLang: Language = defaultLang;
-const t = useTranslations(currentLang);
-const HOME = getHomeMetadata(currentLang);
+import { SITE, HOME, SOCIALS } from "@consts";
 
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
@@ -31,18 +25,17 @@ const projects = (await getCollection("projects"))
   description={HOME.DESCRIPTION} 
   structuredDataType="person"
   keywords="software engineer, backend developer, mobile developer, go, golang, laravel, php, android, flutter, freelancer, indonesia"
-  currentLang={currentLang}
 >
   <Container>
     <h4 class="animate font-semibold text-black dark:text-white" {...{ 'data-testid': 'heading' }}>
-      {t('home.greeting')}
+      Halo, saya Andrian
       <span class="text-xl">👋🏻</span>
     </h4>
     <div class="space-y-16">
       <section>
         <article class="space-y-4">
           <p class="animate">
-            {t('home.intro')}
+            Saya di sini untuk membangun sistem yang bersih, skalabel, dan siap produksi. Anda bawa masalahnya, saya akan desain solusinya dari backend ke frontend, dari brief sampai deployment.
           </p>
         </article>
       </section>
@@ -83,16 +76,16 @@ const projects = (await getCollection("projects"))
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            {t('home.recent_projects')}
+            Proyek terbaru
           </h5>
           <Link href="/projects">
-            {t('home.see_all_projects')}
+            Lihat semua proyek
           </Link>
         </div>
         <ul class="flex flex-col gap-4">
           {projects.map(project => (
             <li>
-              <ArrowCard entry={project} lang={currentLang} />
+              <ArrowCard entry={project} />
             </li>
           ))}
         </ul>
@@ -102,16 +95,16 @@ const projects = (await getCollection("projects"))
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            {t('home.latest_posts')}
+            Artikel terbaru
           </h5>
           <Link href="/blog">
-            {t('home.see_all_posts')}
+            Lihat semua artikel
           </Link>
         </div>
         <ul class="flex flex-col gap-4">
           {blog.map(post => (
             <li>
-              <ArrowCard entry={post} lang={currentLang} />
+              <ArrowCard entry={post} />
             </li>
           ))}
         </ul>
@@ -120,11 +113,11 @@ const projects = (await getCollection("projects"))
       <!-- Connect -->
       <section class="animate space-y-4">
         <h5 class="font-semibold text-black dark:text-white">
-          {t('home.connect')}
+          Mari Terhubung
         </h5>
         <article>
           <p>
-            {t('home.connect_text')}
+            Jika ingin berdiskusi tentang sesuatu atau sekadar menyapa, hubungi saya melalui media sosial atau kirim email.
           </p>
         </article>
         <ul class="flex flex-wrap gap-2">
@@ -143,7 +136,7 @@ const projects = (await getCollection("projects"))
           </li>
           <li class="line-clamp-1">
             <Link href="/files/resume-andriancyns-software-engineer.pdf" download="resume-andriancyns-software-engineer.pdf" aria-label="Download Portfolio">
-              {t('home.download_resume')}
+              unduh resume saya
             </Link>
           </li>
         </ul>

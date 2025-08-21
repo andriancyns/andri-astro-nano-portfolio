@@ -1,24 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getTitleByLang, getDescriptionByLang } from "../lib/translations";
-import { defaultLang, type Language } from "../i18n";
 
 type Props = {
   entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
-  lang?: Language;
   basePath?: string;
 }
 
-const { entry, lang = defaultLang, basePath = '' } = Astro.props;
-
-// Get translated title and description for blog posts
-const displayTitle = entry.collection === 'blog' 
-  ? getTitleByLang(entry.slug, lang, entry.data.titleEn || entry.data.title)
-  : (entry.data.titleEn && lang === 'en') ? entry.data.titleEn : entry.data.title;
-
-const displayDescription = entry.collection === 'blog'
-  ? getDescriptionByLang(entry.slug, lang, entry.data.descriptionEn || entry.data.description)  
-  : (entry.data.descriptionEn && lang === 'en') ? entry.data.descriptionEn : entry.data.description;
+const { entry, basePath = '' } = Astro.props;
 
 const href = `${basePath}/${entry.collection}/${entry.slug}`;
 ---
@@ -26,10 +14,10 @@ const href = `${basePath}/${entry.collection}/${entry.slug}`;
 <a href={href} class="relative group flex flex-nowrap py-3 px-4 pr-10 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
   <div class="flex flex-col flex-1 truncate">
     <div class="font-semibold">
-      {displayTitle}
+      {entry.data.title}
     </div>
     <div class="text-sm">
-      {displayDescription}
+      {entry.data.description}
     </div>
   </div>
   <svg 

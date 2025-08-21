@@ -3,8 +3,6 @@ import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import StructuredData from "@components/StructuredData.astro";
-import { type Language, defaultLang } from "../i18n";
-
 
 type Props = {
   title: string;
@@ -19,14 +17,13 @@ type Props = {
   wordCount?: number;
   tags?: string[];
   breadcrumbItems?: Array<{name: string, url: string}>;
-  currentLang?: Language;
 };
 
-const { title, description, image, keywords, structuredDataType = 'website', datePublished, dateModified, author, readingTime, wordCount, tags, breadcrumbItems, currentLang = defaultLang } = Astro.props;
+const { title, description, image, keywords, structuredDataType = 'website', datePublished, dateModified, author, readingTime, wordCount, tags, breadcrumbItems } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={currentLang}>
+<html lang="id">
   <head>
     <Head title={title} description={description} image={image} keywords={keywords} />
     <StructuredData 
@@ -44,73 +41,10 @@ const { title, description, image, keywords, structuredDataType = 'website', dat
     />
   </head>
   <body>
-    <Header currentLang={currentLang} />
+    <Header />
     <main>
       <slot />
     </main>
     <Footer />
-    
-    <!-- Language detection and auto-redirect script -->
-    <script is:inline>
-      function detectUserLanguage() {
-        if (typeof window === 'undefined') return 'id';
-        
-        // Check localStorage first
-        const savedLang = localStorage.getItem('preferred-language');
-        if (savedLang && ['en', 'id'].includes(savedLang)) {
-          return savedLang;
-        }
-        
-        // Check browser language
-        const browserLang = navigator.language.toLowerCase();
-        
-        // Indonesian language detection
-        if (browserLang.includes('id') || browserLang.includes('indonesia')) {
-          return 'id';
-        }
-        
-        // Default to English for all other languages
-        return 'en';
-      }
-
-      function saveLanguagePreference(lang) {
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('preferred-language', lang);
-        }
-      }
-
-      function getLanguageFromURL() {
-        if (typeof window === 'undefined') return null;
-        
-        const path = window.location.pathname;
-        const segments = path.split('/').filter(Boolean);
-        
-        if (segments.length > 0 && ['en', 'id'].includes(segments[0])) {
-          return segments[0];
-        }
-        
-        return null;
-      }
-      
-      // Only run on first visit to detect language
-      document.addEventListener('DOMContentLoaded', () => {
-        const urlLang = getLanguageFromURL();
-        const detectedLang = detectUserLanguage();
-        
-        // If no language in URL and detected language is different from default
-        if (!urlLang && detectedLang !== 'id') {
-          // Save preference and redirect to English version
-          saveLanguagePreference(detectedLang);
-          const currentPath = window.location.pathname;
-          
-          // Redirect to English version for any page
-          if (detectedLang === 'en') {
-            // Add /en prefix to current path
-            const newPath = '/en' + (currentPath === '/' ? '/' : currentPath);
-            window.location.href = newPath;
-          }
-        }
-      });
-    </script>
   </body>
 </html>

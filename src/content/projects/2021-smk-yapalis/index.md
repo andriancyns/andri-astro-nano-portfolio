@@ -1,6 +1,6 @@
 ---
-title: "Sistem Manajemen Sekolah SMK Yapalis Krian"
-description: "Merancang dan mengembangkan sistem manajemen sekolah yang komprehensif untuk SMK Yapalis Krian Sidoarjo, mentransformasi proses administrasi manual menjadi platform digital terintegrasi. Solusi ini menyederhanakan operasi, meningkatkan efisiensi manajemen data, dan mendukung peningkatan performa akademik secara keseluruhan."
+title: "SMK Yapalis Krian School Management System"
+description: "Designed and developed a comprehensive school management system for SMK Yapalis Krian Sidoarjo, transforming manual administrative processes into an integrated digital platform. The solution streamlined operations, enhanced data management efficiency, and supported overall academic performance improvement."
 date: "Oct 2021"
 demoURL: "https://smkyapalis-krian.sch.id"
 status: completed

@@ -1,6 +1,6 @@
 ---
-title: "Bytenova - Website Modern Solusi Energi Hijau"
-description: "Bytenova adalah perusahaan solusi energi hijau yang menyediakan solusi energi berkelanjutan untuk bisnis dan individu."
+title: "Bytenova - Green Energy Solutions Modern Website"
+description: "Bytenova is a green energy solutions company that provides sustainable energy solutions to businesses and individuals."
 date: "Mar 26 2024"
 demoURL: "https://bytenova.vercel.app/"
 status: completed

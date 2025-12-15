@@ -1,6 +1,6 @@
 ---
-title: "Sistem Rekomendasi Berbasis Random Forest - Kasus Staff Akademik dan Administrasi"
-description: "Proyek ini adalah solusi machine learning komprehensif yang fokus pada membangun dan mengevaluasi sistem klasifikasi berbasis Random Forest untuk rekomendasi staff akademik (dosen) dan staff administrasi (tendik). Solusi ini mencakup seluruh pipeline data science, dari preprocessing data dan feature engineering hingga seleksi model, optimasi hyperparameter, dan analisis interpretabilitas."
+title: "Random Forest-Based Recommendation System - Academic Staff and Administrative Staff Case"
+description: "This project is a comprehensive machine learning solution focused on building and evaluating a Random Forest-based classification system for academic staff (dosen) and administrative staff (tendik) recommendations. The solution covers the full data science pipeline, from data preprocessing and feature engineering to model selection, hyperparameter optimization, and interpretability analysis."
 date: "Aug 2024"
 demoURL: ""
 status: completed

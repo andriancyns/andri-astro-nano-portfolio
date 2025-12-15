@@ -1,6 +1,6 @@
 ---
-title: "Modul Off Farm Karet - OSS Planters (Android)"
-description: "Modul Off Farm Karet didedikasikan untuk mengelola dan mengoptimalkan proses pasca panen karet, membantu pekebun dalam manajemen produksi dan distribusi hasil karet dengan lebih efisien."
+title: "Off Farm Karet Module - OSS Planters (Android)"
+description: "The Off Farm Karet module is dedicated to managing and optimizing post-harvest rubber processes, helping planters manage production and distribution of rubber products more efficiently."
 date: "Dec 2022"
 demoURL: "https://play.google.com/store/apps/details?id=com.ptpn12.oss&hl=en"
 status: completed

@@ -5,6 +5,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import AvailabilityBadge from "@components/AvailabilityBadge.astro";
+import NewsletterForm from "@components/NewsletterForm.astro";
 import { SITE, HOME, SOCIALS } from "@consts";
 
 const blog = (await getCollection("blog"))
@@ -118,6 +119,11 @@ const projects = (await getCollection("projects"))
             ))
           }
         </ul>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="animate">
+        <NewsletterForm />
       </section>
 
       <!-- Connect -->

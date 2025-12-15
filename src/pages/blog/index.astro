@@ -4,6 +4,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import BlogSearch from "@components/BlogSearch.astro";
+import NewsletterForm from "@components/NewsletterForm.astro";
 import { BLOG } from "@consts";
 
 const data = (await getCollection("blog"))
@@ -26,11 +27,11 @@ const posts = data.reduce((acc: Acc, post) => {
 const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
 
 // Prepare posts data for search
-const searchPosts = data.map(post => ({
+const searchPosts = data.map((post) => ({
   slug: post.slug,
   title: post.data.title,
   description: post.data.description,
-  date: post.data.date.toISOString()
+  date: post.data.date.toISOString(),
 }));
 ---
 
@@ -42,7 +43,9 @@ const searchPosts = data.map(post => ({
   <Container>
     <div class="space-y-10">
       <div class="space-y-4">
-        <div class="animate font-semibold text-black dark:text-white text-xl">Blog</div>
+        <div class="animate font-semibold text-black dark:text-white text-xl">
+          Blog
+        </div>
         <div class="animate">
           <BlogSearch posts={searchPosts} />
         </div>
@@ -55,7 +58,7 @@ const searchPosts = data.map(post => ({
               <div>
                 <ul class="flex flex-col gap-4">
                   {posts[year].map((post) => (
-                    <li 
+                    <li
                       data-blog-item
                       data-title={post.data.title}
                       data-description={post.data.description}
@@ -69,6 +72,11 @@ const searchPosts = data.map(post => ({
           ))
         }
       </div>
+
+      <!-- Newsletter -->
+      <section class="animate">
+        <NewsletterForm />
+      </section>
     </div>
   </Container>
 </PageLayout>

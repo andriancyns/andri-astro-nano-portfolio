@@ -1,0 +1,84 @@
+---
+
+---
+
+<div
+  class="newsletter-section p-6 border border-black/10 dark:border-white/10 rounded-lg bg-black/5 dark:bg-white/5"
+>
+  <div class="space-y-3">
+    <h3 class="font-semibold text-black dark:text-white">
+      📬 Subscribe to my newsletter
+    </h3>
+    <p class="text-sm opacity-70">
+      Get notified when I publish new articles. No spam, unsubscribe anytime.
+    </p>
+    <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2">
+      <input
+        type="email"
+        id="newsletter-email"
+        placeholder="your@email.com"
+        required
+        class="flex-1 px-4 py-2 border border-black/10 dark:border-white/10 rounded-lg bg-transparent focus:outline-none focus:border-black/30 dark:focus:border-white/30 transition-colors"
+      />
+      <button
+        type="submit"
+        id="newsletter-submit"
+        class="px-6 py-2 bg-black dark:bg-white text-white dark:text-black rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
+      >
+        Subscribe
+      </button>
+    </form>
+    <div id="newsletter-message" class="text-sm hidden"></div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("newsletter-form") as HTMLFormElement;
+  const emailInput = document.getElementById(
+    "newsletter-email"
+  ) as HTMLInputElement;
+  const submitBtn = document.getElementById(
+    "newsletter-submit"
+  ) as HTMLButtonElement;
+  const messageDiv = document.getElementById(
+    "newsletter-message"
+  ) as HTMLDivElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    // Disable form
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Subscribing...";
+    messageDiv.classList.add("hidden");
+
+    try {
+      const response = await fetch("/.netlify/functions/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        messageDiv.textContent = data.message || "Check your email to verify!";
+        messageDiv.className = "text-sm text-green-600 dark:text-green-400";
+        emailInput.value = "";
+      } else {
+        messageDiv.textContent = data.error || "Something went wrong";
+        messageDiv.className = "text-sm text-red-600 dark:text-red-400";
+      }
+    } catch (error) {
+      messageDiv.textContent = "Network error. Please try again.";
+      messageDiv.className = "text-sm text-red-600 dark:text-red-400";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Subscribe";
+      messageDiv.classList.remove("hidden");
+    }
+  });
+</script>

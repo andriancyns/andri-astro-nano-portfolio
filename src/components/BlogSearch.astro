@@ -29,8 +29,7 @@ const { posts } = Astro.props;
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="2"
-        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-      />
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
     </svg>
   </div>
   <div id="search-results" class="mt-4 hidden">
@@ -40,76 +39,85 @@ const { posts } = Astro.props;
   </div>
 </div>
 
-<script define:vars={{ posts }}>
-  const searchInput = document.getElementById('blog-search-input');
-  const searchResults = document.getElementById('search-results');
-  const resultCount = document.getElementById('result-count');
-  
+<script is:inline define:vars={{ posts }}>
+  const searchInput = document.getElementById("blog-search-input");
+  const searchResults = document.getElementById("search-results");
+  const resultCount = document.getElementById("result-count");
+
   // Get all blog post elements
-  const blogSections = document.querySelectorAll('[data-blog-section]');
-  const blogItems = document.querySelectorAll('[data-blog-item]');
-  
+  const blogSections = document.querySelectorAll("[data-blog-section]");
+  const blogItems = document.querySelectorAll("[data-blog-item]");
+
   function normalizeText(text) {
-    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
   }
-  
+
   function performSearch(query) {
     const normalizedQuery = normalizeText(query.trim());
-    
+
     if (!normalizedQuery) {
       // Show all items and hide results count
-      blogItems.forEach(item => {
-        item.style.display = '';
+      blogItems.forEach((item) => {
+        item.style.display = "";
       });
-      blogSections.forEach(section => {
-        section.style.display = '';
+      blogSections.forEach((section) => {
+        section.style.display = "";
       });
-      searchResults.classList.add('hidden');
+      searchResults.classList.add("hidden");
       return;
     }
-    
+
     let matchCount = 0;
-    
+
     // Filter items
-    blogItems.forEach(item => {
-      const title = normalizeText(item.getAttribute('data-title') || '');
-      const description = normalizeText(item.getAttribute('data-description') || '');
-      
-      const matches = title.includes(normalizedQuery) || description.includes(normalizedQuery);
-      
+    blogItems.forEach((item) => {
+      const title = normalizeText(item.getAttribute("data-title") || "");
+      const description = normalizeText(
+        item.getAttribute("data-description") || ""
+      );
+
+      const matches =
+        title.includes(normalizedQuery) ||
+        description.includes(normalizedQuery);
+
       if (matches) {
-        item.style.display = '';
+        item.style.display = "";
         matchCount++;
       } else {
-        item.style.display = 'none';
+        item.style.display = "none";
       }
     });
-    
+
     // Hide empty year sections
-    blogSections.forEach(section => {
-      const visibleItems = section.querySelectorAll('[data-blog-item]:not([style*="display: none"])');
-      section.style.display = visibleItems.length > 0 ? '' : 'none';
+    blogSections.forEach((section) => {
+      const visibleItems = section.querySelectorAll(
+        '[data-blog-item]:not([style*="display: none"])'
+      );
+      section.style.display = visibleItems.length > 0 ? "" : "none";
     });
-    
+
     // Update results count
     resultCount.textContent = matchCount.toString();
-    searchResults.classList.remove('hidden');
+    searchResults.classList.remove("hidden");
   }
-  
+
   // Debounce search
   let debounceTimer;
-  searchInput.addEventListener('input', (e) => {
+  searchInput.addEventListener("input", (e) => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
       performSearch(e.target.value);
     }, 200);
   });
-  
+
   // Clear on escape
-  searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      searchInput.value = '';
-      performSearch('');
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      searchInput.value = "";
+      performSearch("");
       searchInput.blur();
     }
   });

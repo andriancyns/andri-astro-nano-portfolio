@@ -81,7 +81,7 @@ export default async function handler(request: Request) {
     const { error: emailError } = await resend.emails.send({
       from: 'Andrian Cahyono <andrian@cyns.space>',
       to: email,
-      subject: 'Verify your subscription to Andrian\'s Blog',
+      subject: 'Verify your subscription to Andrian\'s Blog (cyns.space)',
       html: `
         <!DOCTYPE html>
         <html>
@@ -113,7 +113,7 @@ export default async function handler(request: Request) {
             </div>
             <div style="background-color: #f8f8f8; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0;">
               <p style="color: #888888; font-size: 12px; margin: 0;">
-                © 2024 Andrian Cahyono | <a href="https://cyns.space" style="color: #888888;">cyns.space</a>
+                © 2025 Andrian Cahyono | <a href="https://cyns.space" style="color: #888888;">cyns.space</a>
               </p>
             </div>
           </div>

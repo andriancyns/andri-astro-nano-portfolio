@@ -3,42 +3,57 @@ import PageLayout from "@layouts/PageLayout.astro";
 import { SITE } from "@consts";
 
 // Digital Products - Edit this array to add/remove products
+// links: array of checkout options (if more than 1, shows modal)
 const products = [
   {
     icon: "📚",
     name: "Flutter Development Handbook",
     description: "Complete guide to building production-ready Flutter apps",
-    link: "https://gumroad.com/",
     price: "$19",
-    badge: "Popular"
+    badge: "Popular",
+    links: [
+      { platform: "Gumroad", url: "https://gumroad.com/", icon: "🛒" },
+      { platform: "Etsy", url: "https://etsy.com/", icon: "🏪" },
+    ]
   },
   {
     icon: "📝",
     name: "Freelancer Invoice Template",
     description: "Professional Excel/Google Sheets template for freelancers",
-    link: "https://gumroad.com/",
-    price: "Free"
+    price: "Free",
+    links: [
+      { platform: "Gumroad", url: "https://gumroad.com/", icon: "🛒" },
+    ]
   },
   {
     icon: "🎨",
     name: "Developer Portfolio Template",
     description: "Modern Astro template for software developers",
-    link: "https://github.com/",
-    price: "$9"
+    price: "$9",
+    links: [
+      { platform: "Gumroad", url: "https://gumroad.com/", icon: "🛒" },
+      { platform: "GitHub", url: "https://github.com/", icon: "🐙" },
+    ]
   },
   {
     icon: "⚙️",
     name: "Laravel API Boilerplate",
     description: "Production-ready Laravel API starter with auth & docs",
-    link: "https://github.com/",
-    price: "Free"
+    price: "Free",
+    links: [
+      { platform: "GitHub", url: "https://github.com/", icon: "🐙" },
+    ]
   },
   {
     icon: "📱",
     name: "Mobile App UI Kit",
     description: "Figma UI kit for mobile app designers",
-    link: "https://figma.com/",
-    price: "$15"
+    price: "$15",
+    links: [
+      { platform: "Gumroad", url: "https://gumroad.com/", icon: "🛒" },
+      { platform: "Etsy", url: "https://etsy.com/", icon: "🏪" },
+      { platform: "Figma", url: "https://figma.com/", icon: "🎨" },
+    ]
   }
 ];
 
@@ -82,46 +97,80 @@ const socials = [
           Digital Products
         </h2>
         {products.map((product, index) => (
-          <a
-            href={product.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="glass-button block"
-            style={`animation-delay: ${index * 100}ms`}
-          >
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-white/20 to-white/5 dark:from-white/10 dark:to-white/5 flex items-center justify-center text-2xl shadow-inner">
-                {product.icon}
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-2">
-                  <span class="font-medium text-black dark:text-white truncate">
-                    {product.name}
-                  </span>
-                  {product.badge && (
-                    <span class="px-2 py-0.5 text-xs bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full shadow-sm">
-                      {product.badge}
+          <div class="product-wrapper relative" style={`animation-delay: ${index * 100}ms`}>
+            <button
+              type="button"
+              class="glass-button w-full text-left"
+              data-product-id={`product-${index}`}
+              data-has-options={product.links.length > 1 ? "true" : "false"}
+              data-single-link={product.links.length === 1 ? product.links[0].url : ""}
+            >
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-white/20 to-white/5 dark:from-white/10 dark:to-white/5 flex items-center justify-center text-2xl shadow-inner">
+                  {product.icon}
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <span class="font-medium text-black dark:text-white truncate">
+                      {product.name}
                     </span>
+                    {product.badge && (
+                      <span class="px-2 py-0.5 text-xs bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full shadow-sm">
+                        {product.badge}
+                      </span>
+                    )}
+                  </div>
+                  {product.description && (
+                    <p class="text-sm opacity-60 truncate">{product.description}</p>
                   )}
                 </div>
-                {product.description && (
-                  <p class="text-sm opacity-60 truncate">{product.description}</p>
-                )}
+                <div class="flex items-center gap-3">
+                  <span class={`text-sm font-bold px-3 py-1 rounded-full ${
+                    product.price === 'Free' 
+                      ? 'bg-green-500/20 text-green-500' 
+                      : 'bg-white/10 text-black dark:text-white'
+                  }`}>
+                    {product.price}
+                  </span>
+                  {product.links.length > 1 ? (
+                    <svg class="w-5 h-5 opacity-40 transition-transform chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  ) : (
+                    <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  )}
+                </div>
               </div>
-              <div class="flex items-center gap-3">
-                <span class={`text-sm font-bold px-3 py-1 rounded-full ${
-                  product.price === 'Free' 
-                    ? 'bg-green-500/20 text-green-500' 
-                    : 'bg-white/10 text-black dark:text-white'
-                }`}>
-                  {product.price}
-                </span>
-                <svg class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+            </button>
+            
+            <!-- Floating Options (for products with multiple links) -->
+            {product.links.length > 1 && (
+              <div 
+                id={`product-${index}`} 
+                class="product-options hidden absolute left-0 right-0 mt-2 p-2 glass-dropdown rounded-xl z-20"
+              >
+                <div class="text-xs opacity-50 uppercase tracking-wider px-3 py-2">
+                  Choose platform
+                </div>
+                {product.links.map((link) => (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white/10 transition-colors"
+                  >
+                    <span class="text-lg">{link.icon}</span>
+                    <span class="font-medium">{link.platform}</span>
+                    <svg class="w-4 h-4 opacity-40 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                ))}
               </div>
-            </div>
-          </a>
+            )}
+          </div>
         ))}
       </div>
 
@@ -185,6 +234,7 @@ const socials = [
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
     
     .glass-button::before {
@@ -212,6 +262,34 @@ const socials = [
     
     .glass-button:hover::before {
       left: 100%;
+    }
+
+    .glass-button.active {
+      border-color: rgba(34, 197, 94, 0.5);
+    }
+
+    .glass-button.active .chevron-icon {
+      transform: rotate(180deg);
+    }
+    
+    .glass-dropdown {
+      background: rgba(30, 30, 30, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+      animation: slideDown 0.2s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     .glass-social {
@@ -248,5 +326,64 @@ const socials = [
       background: rgba(255, 255, 255, 0.9);
       border-color: rgba(0, 0, 0, 0.15);
     }
+
+    :global(.light) .glass-dropdown {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
   </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('[data-product-id]');
+      
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const hasOptions = button.getAttribute('data-has-options') === 'true';
+          const singleLink = button.getAttribute('data-single-link');
+          const productId = button.getAttribute('data-product-id');
+          
+          if (!hasOptions && singleLink) {
+            // Single link - open directly
+            window.open(singleLink, '_blank');
+            return;
+          }
+          
+          if (!productId) return;
+          
+          // Multiple options - toggle dropdown
+          const dropdown = document.getElementById(productId);
+          if (!dropdown) return;
+          
+          const isOpen = !dropdown.classList.contains('hidden');
+          
+          // Close all other dropdowns
+          document.querySelectorAll('.product-options').forEach(d => {
+            d.classList.add('hidden');
+          });
+          document.querySelectorAll('.glass-button').forEach(b => {
+            b.classList.remove('active');
+          });
+          
+          if (!isOpen) {
+            dropdown.classList.remove('hidden');
+            button.classList.add('active');
+          }
+        });
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (!target.closest('.product-wrapper')) {
+          document.querySelectorAll('.product-options').forEach(d => {
+            d.classList.add('hidden');
+          });
+          document.querySelectorAll('.glass-button').forEach(b => {
+            b.classList.remove('active');
+          });
+        }
+      });
+    });
+  </script>
 </PageLayout>

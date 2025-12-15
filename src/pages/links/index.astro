@@ -1,0 +1,187 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import { SITE } from "@consts";
+
+// Digital Products - Edit this array to add/remove products
+const products = [
+  {
+    icon: "📚",
+    name: "Flutter Development Handbook",
+    description: "Complete guide to building production-ready Flutter apps",
+    link: "https://gumroad.com/",
+    price: "$19",
+    badge: "Popular",
+  },
+  {
+    icon: "📝",
+    name: "Freelancer Invoice Template",
+    description: "Professional Excel/Google Sheets template for freelancers",
+    link: "https://gumroad.com/",
+    price: "Free",
+  },
+  {
+    icon: "🎨",
+    name: "Developer Portfolio Template",
+    description: "Modern Astro template for software developers",
+    link: "https://github.com/",
+    price: "$9",
+  },
+  {
+    icon: "⚙️",
+    name: "Laravel API Boilerplate",
+    description: "Production-ready Laravel API starter with auth & docs",
+    link: "https://github.com/",
+    price: "Free",
+  },
+  {
+    icon: "📱",
+    name: "Mobile App UI Kit",
+    description: "Figma UI kit for mobile app designers",
+    link: "https://figma.com/",
+    price: "$15",
+  },
+];
+
+const socials = [
+  { name: "GitHub", link: "https://github.com/andriancyns", icon: "🐙" },
+  { name: "LinkedIn", link: "https://linkedin.com/in/andriancyns", icon: "💼" },
+  { name: "Email", link: "mailto:andriancyns@gmail.com", icon: "📧" },
+  { name: "WhatsApp", link: "https://wa.me/62816663942", icon: "💬" },
+];
+---
+
+<PageLayout
+  title="Links | Andrian Cahyono"
+  description="Digital products, resources, and social links from Andrian Cahyono"
+  keywords="digital products, ebook, template, resources, links"
+>
+  <div class="min-h-screen py-12 px-4">
+    <div class="max-w-md mx-auto space-y-8">
+      <!-- Profile Header -->
+      <div class="text-center space-y-4 animate">
+        <div
+          class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-4xl"
+        >
+          👨‍💻
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-black dark:text-white">
+            Andrian Cahyono
+          </h1>
+          <p class="text-sm opacity-70">Software Engineer • Digital Creator</p>
+        </div>
+      </div>
+
+      <!-- Digital Products -->
+      <div class="space-y-3 animate">
+        <h2
+          class="text-sm font-medium opacity-50 uppercase tracking-wider text-center"
+        >
+          Digital Products
+        </h2>
+        {
+          products.map((product) => (
+            <a
+              href={product.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-4 border border-black/10 dark:border-white/10 rounded-xl hover:border-black/25 dark:hover:border-white/25 hover:bg-black/5 dark:hover:bg-white/5 transition-all group"
+            >
+              <div class="flex items-center gap-4">
+                <span class="text-2xl">{product.icon}</span>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <span class="font-medium text-black dark:text-white truncate">
+                      {product.name}
+                    </span>
+                    {product.badge && (
+                      <span class="px-2 py-0.5 text-xs bg-green-500/20 text-green-600 dark:text-green-400 rounded-full">
+                        {product.badge}
+                      </span>
+                    )}
+                  </div>
+                  {product.description && (
+                    <p class="text-sm opacity-60 truncate">
+                      {product.description}
+                    </p>
+                  )}
+                </div>
+                <div class="flex items-center gap-2">
+                  <span
+                    class={`text-sm font-medium ${product.price === "Free" ? "text-green-600 dark:text-green-400" : "text-black dark:text-white"}`}
+                  >
+                    {product.price}
+                  </span>
+                  <svg
+                    class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Social Links -->
+      <div class="space-y-3 animate">
+        <h2
+          class="text-sm font-medium opacity-50 uppercase tracking-wider text-center"
+        >
+          Connect
+        </h2>
+        <div class="grid grid-cols-2 gap-3">
+          {
+            socials.map((social) => (
+              <a
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 p-3 border border-black/10 dark:border-white/10 rounded-xl hover:border-black/25 dark:hover:border-white/25 hover:bg-black/5 dark:hover:bg-white/5 transition-all"
+              >
+                <span>{social.icon}</span>
+                <span class="text-sm font-medium">{social.name}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Website Link -->
+      <div class="text-center animate">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-sm opacity-60 hover:opacity-100 transition-opacity"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          Back to {SITE.NAME}
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center text-xs opacity-40 animate">
+        © 2025 Andrian Cahyono
+      </div>
+    </div>
+  </div>
+</PageLayout>

@@ -14,16 +14,14 @@ const products = [
     links: [
       { platform: "Gumroad", url: "https://gumroad.com/", icon: "🛒" },
       { platform: "Etsy", url: "https://etsy.com/", icon: "🏪" },
-    ]
+    ],
   },
   {
     icon: "📝",
     name: "Freelancer Invoice Template",
     description: "Professional Excel/Google Sheets template for freelancers",
     price: "Free",
-    links: [
-      { platform: "Gumroad", url: "https://gumroad.com/", icon: "🛒" },
-    ]
+    links: [{ platform: "Gumroad", url: "https://gumroad.com/", icon: "🛒" }],
   },
   {
     icon: "🎨",
@@ -33,16 +31,14 @@ const products = [
     links: [
       { platform: "Gumroad", url: "https://gumroad.com/", icon: "🛒" },
       { platform: "GitHub", url: "https://github.com/", icon: "🐙" },
-    ]
+    ],
   },
   {
     icon: "⚙️",
     name: "Laravel API Boilerplate",
     description: "Production-ready Laravel API starter with auth & docs",
     price: "Free",
-    links: [
-      { platform: "GitHub", url: "https://github.com/", icon: "🐙" },
-    ]
+    links: [{ platform: "GitHub", url: "https://github.com/", icon: "🐙" }],
   },
   {
     icon: "📱",
@@ -53,8 +49,8 @@ const products = [
       { platform: "Gumroad", url: "https://gumroad.com/", icon: "🛒" },
       { platform: "Etsy", url: "https://etsy.com/", icon: "🏪" },
       { platform: "Figma", url: "https://figma.com/", icon: "🎨" },
-    ]
-  }
+    ],
+  },
 ];
 
 const socials = [
@@ -72,126 +68,143 @@ const socials = [
 >
   <div class="min-h-screen py-12 px-4 relative overflow-hidden">
     <!-- Background gradient blobs -->
-    <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-green-500/30 to-blue-500/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-    <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
-    
+    <div
+      class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-green-500/30 to-blue-500/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none"
+    >
+    </div>
+
     <div class="max-w-md mx-auto space-y-8 relative z-10">
       <!-- Profile Header - Glass Card -->
       <div class="text-center space-y-4 animate glass-card p-8 rounded-2xl">
-        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-4xl shadow-lg shadow-green-500/25">
+        <div
+          class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-4xl shadow-lg shadow-green-500/25"
+        >
           👨‍💻
         </div>
         <div>
           <h1 class="text-xl font-bold text-black dark:text-white">
             Andrian Cahyono
           </h1>
-          <p class="text-sm opacity-70">
-            Software Engineer • Digital Creator
-          </p>
+          <p class="text-sm opacity-70">Software Engineer • Digital Creator</p>
         </div>
       </div>
 
       <!-- Digital Products -->
-      <div class="space-y-3 animate">
-        <h2 class="text-sm font-medium opacity-50 uppercase tracking-wider text-center">
+      <div class="space-y-3 animate" id="products-section">
+        <h2
+          class="text-sm font-medium opacity-50 uppercase tracking-wider text-center"
+        >
           Digital Products
         </h2>
-        {products.map((product, index) => (
-          <div class="product-wrapper relative" style={`animation-delay: ${index * 100}ms`}>
-            <button
-              type="button"
-              class="glass-button w-full text-left"
-              data-product-id={`product-${index}`}
-              data-has-options={product.links.length > 1 ? "true" : "false"}
-              data-single-link={product.links.length === 1 ? product.links[0].url : ""}
+        {
+          products.map((product, index) => (
+            <div
+              class="product-wrapper"
+              style={`animation-delay: ${index * 100}ms`}
             >
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-white/20 to-white/5 dark:from-white/10 dark:to-white/5 flex items-center justify-center text-2xl shadow-inner">
-                  {product.icon}
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-2">
-                    <span class="font-medium text-black dark:text-white truncate">
-                      {product.name}
-                    </span>
-                    {product.badge && (
-                      <span class="px-2 py-0.5 text-xs bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full shadow-sm">
-                        {product.badge}
+              <button
+                type="button"
+                class="glass-button w-full text-left"
+                data-product-id={`product-${index}`}
+                data-has-options={product.links.length > 1 ? "true" : "false"}
+                data-single-link={
+                  product.links.length === 1 ? product.links[0].url : ""
+                }
+              >
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-white/20 to-white/5 dark:from-white/10 dark:to-white/5 flex items-center justify-center text-2xl shadow-inner flex-shrink-0">
+                    {product.icon}
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="font-medium text-black dark:text-white line-clamp-1">
+                        {product.name}
                       </span>
+                      {product.badge && (
+                        <span class="px-2 py-0.5 text-xs bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full shadow-sm flex-shrink-0">
+                          {product.badge}
+                        </span>
+                      )}
+                    </div>
+                    {product.description && (
+                      <p class="text-sm opacity-60 line-clamp-1">
+                        {product.description}
+                      </p>
                     )}
                   </div>
-                  {product.description && (
-                    <p class="text-sm opacity-60 truncate">{product.description}</p>
-                  )}
+                  <div class="flex items-center gap-2 flex-shrink-0">
+                    <span
+                      class={`text-sm font-bold px-3 py-1 rounded-full ${
+                        product.price === "Free"
+                          ? "bg-green-500/20 text-green-500"
+                          : "bg-white/10 text-black dark:text-white"
+                      }`}
+                    >
+                      {product.price}
+                    </span>
+                    {product.links.length > 1 ? (
+                      <svg
+                        class="w-5 h-5 opacity-40 transition-transform chevron-icon"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        class="w-5 h-5 opacity-40"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    )}
+                  </div>
                 </div>
-                <div class="flex items-center gap-3">
-                  <span class={`text-sm font-bold px-3 py-1 rounded-full ${
-                    product.price === 'Free' 
-                      ? 'bg-green-500/20 text-green-500' 
-                      : 'bg-white/10 text-black dark:text-white'
-                  }`}>
-                    {product.price}
-                  </span>
-                  {product.links.length > 1 ? (
-                    <svg class="w-5 h-5 opacity-40 transition-transform chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  ) : (
-                    <svg class="w-5 h-5 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  )}
-                </div>
-              </div>
-            </button>
-            
-            <!-- Floating Options (for products with multiple links) -->
-            {product.links.length > 1 && (
-              <div 
-                id={`product-${index}`} 
-                class="product-options hidden absolute left-0 right-0 mt-2 p-2 glass-dropdown rounded-xl z-20"
-              >
-                <div class="text-xs opacity-50 uppercase tracking-wider px-3 py-2">
-                  Choose platform
-                </div>
-                {product.links.map((link) => (
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white/10 transition-colors"
-                  >
-                    <span class="text-lg">{link.icon}</span>
-                    <span class="font-medium">{link.platform}</span>
-                    <svg class="w-4 h-4 opacity-40 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
+              </button>
+            </div>
+          ))
+        }
       </div>
 
       <!-- Social Links -->
-      <div class="space-y-3 animate">
-        <h2 class="text-sm font-medium opacity-50 uppercase tracking-wider text-center">
+      <div class="space-y-3 animate" id="social-section">
+        <h2
+          class="text-sm font-medium opacity-50 uppercase tracking-wider text-center"
+        >
           Connect
         </h2>
         <div class="grid grid-cols-2 gap-3">
-          {socials.map((social, index) => (
-            <a
-              href={social.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="glass-social"
-              style={`animation-delay: ${(index + 5) * 100}ms`}
-            >
-              <span class="text-xl">{social.icon}</span>
-              <span class="text-sm font-medium">{social.name}</span>
-            </a>
-          ))}
+          {
+            socials.map((social, index) => (
+              <a
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-social"
+                style={`animation-delay: ${(index + 5) * 100}ms`}
+              >
+                <span class="text-xl">{social.icon}</span>
+                <span class="text-sm font-medium">{social.name}</span>
+              </a>
+            ))
+          }
         </div>
       </div>
 
@@ -201,8 +214,17 @@ const socials = [
           href="/"
           class="inline-flex items-center gap-2 text-sm opacity-60 hover:opacity-100 transition-all hover:-translate-x-1"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
           </svg>
           Back to {SITE.NAME}
         </a>
@@ -215,6 +237,27 @@ const socials = [
     </div>
   </div>
 
+  <!-- Modal Overlay for Dropdown -->
+  <div
+    id="dropdown-overlay"
+    class="fixed inset-0 z-40 hidden"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- Dropdown Portal Container -->
+  <div id="dropdown-container" class="fixed z-50 hidden">
+    <div
+      id="dropdown-content"
+      class="glass-dropdown rounded-xl p-2 min-w-64 max-w-sm"
+    >
+      <div class="text-xs opacity-50 uppercase tracking-wider px-3 py-2">
+        Choose platform
+      </div>
+      <div id="dropdown-links"></div>
+    </div>
+  </div>
+
   <style>
     .glass-card {
       background: rgba(255, 255, 255, 0.05);
@@ -223,7 +266,7 @@ const socials = [
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
-    
+
     .glass-button {
       padding: 1rem;
       background: rgba(255, 255, 255, 0.05);
@@ -235,10 +278,11 @@ const socials = [
       position: relative;
       overflow: hidden;
       cursor: pointer;
+      width: 100%;
     }
-    
+
     .glass-button::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: -100%;
@@ -252,46 +296,65 @@ const socials = [
       );
       transition: left 0.5s;
     }
-    
+
     .glass-button:hover {
       transform: translateY(-2px) scale(1.01);
       border-color: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15),
-                  0 0 0 1px rgba(255, 255, 255, 0.1);
+      box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
     }
-    
+
     .glass-button:hover::before {
       left: 100%;
     }
 
     .glass-button.active {
       border-color: rgba(34, 197, 94, 0.5);
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
     }
 
     .glass-button.active .chevron-icon {
       transform: rotate(180deg);
     }
-    
+
     .glass-dropdown {
-      background: rgba(30, 30, 30, 0.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(20, 20, 20, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
-      animation: slideDown 0.2s ease-out;
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      animation: dropdownFadeIn 0.2s ease-out;
     }
 
-    @keyframes slideDown {
+    @keyframes dropdownFadeIn {
       from {
         opacity: 0;
-        transform: translateY(-8px);
+        transform: translateY(-8px) scale(0.95);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
-    
+
+    .dropdown-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      border-radius: 0.75rem;
+      transition: all 0.2s ease;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .dropdown-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
     .glass-social {
       display: flex;
       align-items: center;
@@ -305,12 +368,19 @@ const socials = [
       border-radius: 1rem;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     .glass-social:hover {
       transform: translateY(-2px);
       background: rgba(255, 255, 255, 0.1);
       border-color: rgba(255, 255, 255, 0.2);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .line-clamp-1 {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
     }
 
     /* Light mode adjustments */
@@ -320,7 +390,7 @@ const socials = [
       background: rgba(255, 255, 255, 0.7);
       border-color: rgba(0, 0, 0, 0.1);
     }
-    
+
     :global(.light) .glass-button:hover,
     :global(.light) .glass-social:hover {
       background: rgba(255, 255, 255, 0.9);
@@ -328,62 +398,109 @@ const socials = [
     }
 
     :global(.light) .glass-dropdown {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.98);
       border-color: rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    :global(.light) .dropdown-link:hover {
+      background: rgba(0, 0, 0, 0.05);
     }
   </style>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const buttons = document.querySelectorAll('[data-product-id]');
-      
-      buttons.forEach(button => {
-        button.addEventListener('click', () => {
-          const hasOptions = button.getAttribute('data-has-options') === 'true';
-          const singleLink = button.getAttribute('data-single-link');
-          const productId = button.getAttribute('data-product-id');
-          
+  <script is:inline define:vars={{ products }}>
+    document.addEventListener("DOMContentLoaded", () => {
+      const buttons = document.querySelectorAll("[data-product-id]");
+      const overlay = document.getElementById("dropdown-overlay");
+      const container = document.getElementById("dropdown-container");
+      const linksContainer = document.getElementById("dropdown-links");
+
+      let activeButton = null;
+
+      function closeDropdown() {
+        if (container) container.classList.add("hidden");
+        if (overlay) overlay.classList.add("hidden");
+        if (activeButton) {
+          activeButton.classList.remove("active");
+          activeButton = null;
+        }
+      }
+
+      function openDropdown(button, productIndex) {
+        const product = products[productIndex];
+        if (!product || !product.links || product.links.length <= 1) return;
+
+        // Build links HTML
+        let linksHtml = "";
+        product.links.forEach((link) => {
+          linksHtml += `
+            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="dropdown-link">
+              <span class="text-lg">${link.icon}</span>
+              <span class="font-medium flex-1">${link.platform}</span>
+              <svg class="w-4 h-4 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          `;
+        });
+
+        if (linksContainer) linksContainer.innerHTML = linksHtml;
+
+        // Position dropdown below button
+        const rect = button.getBoundingClientRect();
+        const scrollY = window.scrollY;
+
+        if (container) {
+          container.style.top = rect.bottom + scrollY + 8 + "px";
+          container.style.left = rect.left + "px";
+          container.style.width = rect.width + "px";
+          container.classList.remove("hidden");
+        }
+
+        if (overlay) overlay.classList.remove("hidden");
+
+        activeButton = button;
+        button.classList.add("active");
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          e.stopPropagation();
+
+          const hasOptions = button.getAttribute("data-has-options") === "true";
+          const singleLink = button.getAttribute("data-single-link");
+          const productId = button.getAttribute("data-product-id");
+
           if (!hasOptions && singleLink) {
-            // Single link - open directly
-            window.open(singleLink, '_blank');
+            window.open(singleLink, "_blank");
             return;
           }
-          
+
           if (!productId) return;
-          
-          // Multiple options - toggle dropdown
-          const dropdown = document.getElementById(productId);
-          if (!dropdown) return;
-          
-          const isOpen = !dropdown.classList.contains('hidden');
-          
-          // Close all other dropdowns
-          document.querySelectorAll('.product-options').forEach(d => {
-            d.classList.add('hidden');
-          });
-          document.querySelectorAll('.glass-button').forEach(b => {
-            b.classList.remove('active');
-          });
-          
-          if (!isOpen) {
-            dropdown.classList.remove('hidden');
-            button.classList.add('active');
+
+          const productIndex = parseInt(productId.replace("product-", ""));
+
+          if (activeButton === button) {
+            closeDropdown();
+          } else {
+            closeDropdown();
+            openDropdown(button, productIndex);
           }
         });
       });
 
-      // Close dropdown when clicking outside
-      document.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
-        if (!target.closest('.product-wrapper')) {
-          document.querySelectorAll('.product-options').forEach(d => {
-            d.classList.add('hidden');
-          });
-          document.querySelectorAll('.glass-button').forEach(b => {
-            b.classList.remove('active');
-          });
-        }
+      // Close on overlay click
+      if (overlay) {
+        overlay.addEventListener("click", closeDropdown);
+      }
+
+      // Close on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeDropdown();
       });
+
+      // Close on scroll
+      window.addEventListener("scroll", closeDropdown);
     });
   </script>
 </PageLayout>

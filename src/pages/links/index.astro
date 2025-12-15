@@ -10,36 +10,36 @@ const products = [
     description: "Complete guide to building production-ready Flutter apps",
     link: "https://gumroad.com/",
     price: "$19",
-    badge: "Popular",
+    badge: "Popular"
   },
   {
     icon: "📝",
     name: "Freelancer Invoice Template",
     description: "Professional Excel/Google Sheets template for freelancers",
     link: "https://gumroad.com/",
-    price: "Free",
+    price: "Free"
   },
   {
     icon: "🎨",
     name: "Developer Portfolio Template",
     description: "Modern Astro template for software developers",
     link: "https://github.com/",
-    price: "$9",
+    price: "$9"
   },
   {
     icon: "⚙️",
     name: "Laravel API Boilerplate",
     description: "Production-ready Laravel API starter with auth & docs",
     link: "https://github.com/",
-    price: "Free",
+    price: "Free"
   },
   {
     icon: "📱",
     name: "Mobile App UI Kit",
     description: "Figma UI kit for mobile app designers",
     link: "https://figma.com/",
-    price: "$15",
-  },
+    price: "$15"
+  }
 ];
 
 const socials = [
@@ -55,104 +55,94 @@ const socials = [
   description="Digital products, resources, and social links from Andrian Cahyono"
   keywords="digital products, ebook, template, resources, links"
 >
-  <div class="min-h-screen py-12 px-4">
-    <div class="max-w-md mx-auto space-y-8">
-      <!-- Profile Header -->
-      <div class="text-center space-y-4 animate">
-        <div
-          class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-4xl"
-        >
+  <div class="min-h-screen py-12 px-4 relative overflow-hidden">
+    <!-- Background gradient blobs -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-green-500/30 to-blue-500/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+    
+    <div class="max-w-md mx-auto space-y-8 relative z-10">
+      <!-- Profile Header - Glass Card -->
+      <div class="text-center space-y-4 animate glass-card p-8 rounded-2xl">
+        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-4xl shadow-lg shadow-green-500/25">
           👨‍💻
         </div>
         <div>
           <h1 class="text-xl font-bold text-black dark:text-white">
             Andrian Cahyono
           </h1>
-          <p class="text-sm opacity-70">Software Engineer • Digital Creator</p>
+          <p class="text-sm opacity-70">
+            Software Engineer • Digital Creator
+          </p>
         </div>
       </div>
 
       <!-- Digital Products -->
       <div class="space-y-3 animate">
-        <h2
-          class="text-sm font-medium opacity-50 uppercase tracking-wider text-center"
-        >
+        <h2 class="text-sm font-medium opacity-50 uppercase tracking-wider text-center">
           Digital Products
         </h2>
-        {
-          products.map((product) => (
-            <a
-              href={product.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block p-4 border border-black/10 dark:border-white/10 rounded-xl hover:border-black/25 dark:hover:border-white/25 hover:bg-black/5 dark:hover:bg-white/5 transition-all group"
-            >
-              <div class="flex items-center gap-4">
-                <span class="text-2xl">{product.icon}</span>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-2">
-                    <span class="font-medium text-black dark:text-white truncate">
-                      {product.name}
+        {products.map((product, index) => (
+          <a
+            href={product.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-button block"
+            style={`animation-delay: ${index * 100}ms`}
+          >
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-white/20 to-white/5 dark:from-white/10 dark:to-white/5 flex items-center justify-center text-2xl shadow-inner">
+                {product.icon}
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2">
+                  <span class="font-medium text-black dark:text-white truncate">
+                    {product.name}
+                  </span>
+                  {product.badge && (
+                    <span class="px-2 py-0.5 text-xs bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full shadow-sm">
+                      {product.badge}
                     </span>
-                    {product.badge && (
-                      <span class="px-2 py-0.5 text-xs bg-green-500/20 text-green-600 dark:text-green-400 rounded-full">
-                        {product.badge}
-                      </span>
-                    )}
-                  </div>
-                  {product.description && (
-                    <p class="text-sm opacity-60 truncate">
-                      {product.description}
-                    </p>
                   )}
                 </div>
-                <div class="flex items-center gap-2">
-                  <span
-                    class={`text-sm font-medium ${product.price === "Free" ? "text-green-600 dark:text-green-400" : "text-black dark:text-white"}`}
-                  >
-                    {product.price}
-                  </span>
-                  <svg
-                    class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </div>
+                {product.description && (
+                  <p class="text-sm opacity-60 truncate">{product.description}</p>
+                )}
               </div>
-            </a>
-          ))
-        }
+              <div class="flex items-center gap-3">
+                <span class={`text-sm font-bold px-3 py-1 rounded-full ${
+                  product.price === 'Free' 
+                    ? 'bg-green-500/20 text-green-500' 
+                    : 'bg-white/10 text-black dark:text-white'
+                }`}>
+                  {product.price}
+                </span>
+                <svg class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
       </div>
 
       <!-- Social Links -->
       <div class="space-y-3 animate">
-        <h2
-          class="text-sm font-medium opacity-50 uppercase tracking-wider text-center"
-        >
+        <h2 class="text-sm font-medium opacity-50 uppercase tracking-wider text-center">
           Connect
         </h2>
         <div class="grid grid-cols-2 gap-3">
-          {
-            socials.map((social) => (
-              <a
-                href={social.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center justify-center gap-2 p-3 border border-black/10 dark:border-white/10 rounded-xl hover:border-black/25 dark:hover:border-white/25 hover:bg-black/5 dark:hover:bg-white/5 transition-all"
-              >
-                <span>{social.icon}</span>
-                <span class="text-sm font-medium">{social.name}</span>
-              </a>
-            ))
-          }
+          {socials.map((social, index) => (
+            <a
+              href={social.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="glass-social"
+              style={`animation-delay: ${(index + 5) * 100}ms`}
+            >
+              <span class="text-xl">{social.icon}</span>
+              <span class="text-sm font-medium">{social.name}</span>
+            </a>
+          ))}
         </div>
       </div>
 
@@ -160,19 +150,10 @@ const socials = [
       <div class="text-center animate">
         <a
           href="/"
-          class="inline-flex items-center gap-2 text-sm opacity-60 hover:opacity-100 transition-opacity"
+          class="inline-flex items-center gap-2 text-sm opacity-60 hover:opacity-100 transition-all hover:-translate-x-1"
         >
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
           Back to {SITE.NAME}
         </a>
@@ -184,4 +165,88 @@ const socials = [
       </div>
     </div>
   </div>
+
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    .glass-button {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .glass-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+    
+    .glass-button:hover {
+      transform: translateY(-2px) scale(1.01);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15),
+                  0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    
+    .glass-button:hover::before {
+      left: 100%;
+    }
+    
+    .glass-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .glass-social:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Light mode adjustments */
+    :global(.light) .glass-card,
+    :global(.light) .glass-button,
+    :global(.light) .glass-social {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    :global(.light) .glass-button:hover,
+    :global(.light) .glass-social:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(0, 0, 0, 0.15);
+    }
+  </style>
 </PageLayout>

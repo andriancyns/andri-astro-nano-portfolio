@@ -1,29 +1,22 @@
-import viewsData from '../data/views.json';
+import { getViewCount, incrementViewCount } from './supabase';
 
-export function getViews(slug: string): number {
-  return viewsData[slug as keyof typeof viewsData] || 0;
+/**
+ * Get view count from Supabase
+ */
+export async function getViews(slug: string): Promise<number> {
+  return await getViewCount(slug);
 }
 
-export function incrementView(slug: string): void {
-  // Client-side increment using localStorage
-  if (typeof window !== 'undefined') {
-    const storageKey = `blog-views-${slug}`;
-    const currentViews = parseInt(localStorage.getItem(storageKey) || '0');
-    const newViews = currentViews + 1;
-    localStorage.setItem(storageKey, newViews.toString());
-  }
+/**
+ * Increment view count in Supabase
+ */
+export async function incrementView(slug: string): Promise<number> {
+  return await incrementViewCount(slug);
 }
 
-export function getLocalViews(slug: string): number {
-  if (typeof window !== 'undefined') {
-    const storageKey = `blog-views-${slug}`;
-    return parseInt(localStorage.getItem(storageKey) || '0');
-  }
-  return 0;
-}
-
-export function getTotalViews(slug: string): number {
-  const baseViews = getViews(slug);
-  const localViews = getLocalViews(slug);
-  return baseViews + localViews;
+/**
+ * Get total views (for compatibility)
+ */
+export async function getTotalViews(slug: string): Promise<number> {
+  return await getViewCount(slug);
 }

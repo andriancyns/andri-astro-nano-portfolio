@@ -1,60 +1,115 @@
 ---
+import { getViewCount } from "@lib/supabase";
+
 interface Props {
   slug: string;
-  initialViews?: number;
 }
 
-const { slug, initialViews = 0 } = Astro.props;
+const { slug } = Astro.props;
+
+// Fetch initial view count from Supabase at build/render time
+let initialViews = 0;
+try {
+  initialViews = await getViewCount(slug);
+} catch (error) {
+  console.error("Failed to fetch initial views:", error);
+}
 ---
 
 <div class="view-counter text-sm opacity-75">
   <span id={`views-${slug}`}>{initialViews}</span> views
 </div>
 
-<script is:inline define:vars={{ slug }}>
-  function getLocalViews(slug) {
-    if (typeof localStorage !== 'undefined') {
-      const storageKey = `blog-views-${slug}`;
-      return parseInt(localStorage.getItem(storageKey) || '0');
-    }
-    return 0;
-  }
-
-  function incrementView(slug) {
-    if (typeof localStorage !== 'undefined') {
-      const storageKey = `blog-views-${slug}`;
-      const currentViews = parseInt(localStorage.getItem(storageKey) || '0');
-      const newViews = currentViews + 1;
-      localStorage.setItem(storageKey, newViews.toString());
-      return newViews;
-    }
-    return 0;
-  }
-
-  function updateViewDisplay(slug, views) {
-    const element = document.getElementById(`views-${slug}`);
-    if (element) {
-      element.textContent = views.toString();
-    }
-  }
-
+<script
+  define:vars={{
+    slug,
+    supabaseUrl: import.meta.env.PUBLIC_SUPABASE_URL,
+    supabaseKey: import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+  }}
+>
   // Check if user has already viewed this post in this session
   const sessionKey = `blog-session-${slug}`;
   const hasViewedInSession = sessionStorage.getItem(sessionKey);
 
+  async function incrementViewOnServer() {
+    if (!supabaseUrl || !supabaseKey) {
+      console.warn("Supabase not configured");
+      return;
+    }
+
+    try {
+      // First, get current count
+      const response = await fetch(
+        `${supabaseUrl}/rest/v1/page_views?slug=eq.${encodeURIComponent(slug)}`,
+        {
+          headers: {
+            apikey: supabaseKey,
+            Authorization: `Bearer ${supabaseKey}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (data && data.length > 0) {
+        // Update existing record
+        const newViews = (data[0].views || 0) + 1;
+        await fetch(
+          `${supabaseUrl}/rest/v1/page_views?slug=eq.${encodeURIComponent(slug)}`,
+          {
+            method: "PATCH",
+            headers: {
+              apikey: supabaseKey,
+              Authorization: `Bearer ${supabaseKey}`,
+              "Content-Type": "application/json",
+              Prefer: "return=representation",
+            },
+            body: JSON.stringify({
+              views: newViews,
+              updated_at: new Date().toISOString(),
+            }),
+          }
+        );
+
+        // Update display
+        const element = document.getElementById(`views-${slug}`);
+        if (element) {
+          element.textContent = newViews.toString();
+        }
+      } else {
+        // Insert new record
+        await fetch(`${supabaseUrl}/rest/v1/page_views`, {
+          method: "POST",
+          headers: {
+            apikey: supabaseKey,
+            Authorization: `Bearer ${supabaseKey}`,
+            "Content-Type": "application/json",
+            Prefer: "return=representation",
+          },
+          body: JSON.stringify({
+            slug: slug,
+            views: 1,
+            updated_at: new Date().toISOString(),
+          }),
+        });
+
+        // Update display
+        const element = document.getElementById(`views-${slug}`);
+        if (element) {
+          element.textContent = "1";
+        }
+      }
+    } catch (error) {
+      console.error("Failed to increment view:", error);
+    }
+  }
+
   if (!hasViewedInSession) {
-    // Increment view count
-    incrementView(slug);
-    
-    // Mark as viewed in this session
-    sessionStorage.setItem(sessionKey, 'true');
-    
-    // Update display
-    const localViews = getLocalViews(slug);
-    updateViewDisplay(slug, localViews);
-  } else {
-    // Just show current count
-    const localViews = getLocalViews(slug);
-    updateViewDisplay(slug, localViews);
+    // Mark as viewed in this session first to prevent double counting
+    sessionStorage.setItem(sessionKey, "true");
+
+    // Increment view count on server
+    incrementViewOnServer();
   }
 </script>

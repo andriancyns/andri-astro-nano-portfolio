@@ -20,6 +20,7 @@
     "@astrojs/tailwind": "^5.1.5",
     "@fontsource/lora": "^5.2.5",
     "@fontsource/uncut-sans": "^5.2.5",
+    "@supabase/supabase-js": "^2.87.1",
     "@tailwindcss/typography": "^0.5.16",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",

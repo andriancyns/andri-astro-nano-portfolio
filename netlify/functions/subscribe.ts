@@ -12,23 +12,24 @@ function generateToken(): string {
   return Math.random().toString(36).substring(2) + Date.now().toString(36);
 }
 
-export default async function handler(event: any) {
+export default async function handler(request: Request) {
   // Only allow POST
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: 'Method not allowed' }),
-    };
+  if (request.method !== 'POST') {
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   try {
-    const { email } = JSON.parse(event.body || '{}');
+    const body = await request.json();
+    const { email } = body;
 
     if (!email || !email.includes('@')) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Valid email is required' }),
-      };
+      return new Response(JSON.stringify({ error: 'Valid email is required' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     // Check if already subscribed
@@ -39,10 +40,10 @@ export default async function handler(event: any) {
       .single();
 
     if (existing?.verified) {
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ message: 'You are already subscribed!' }),
-      };
+      return new Response(JSON.stringify({ message: 'You are already subscribed!' }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     // Generate verification token
@@ -66,19 +67,19 @@ export default async function handler(event: any) {
 
       if (insertError) {
         console.error('Insert error:', insertError);
-        return {
-          statusCode: 500,
-          body: JSON.stringify({ error: 'Failed to subscribe' }),
-        };
+        return new Response(JSON.stringify({ error: 'Failed to subscribe' }), {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        });
       }
     }
 
     // Send verification email
     const siteUrl = process.env.URL || 'https://cyns.space';
-    const verifyUrl = `${siteUrl}/verify?token=${verificationToken}&email=${encodeURIComponent(email)}`;
+    const verifyUrl = `${siteUrl}/.netlify/functions/verify?token=${verificationToken}&email=${encodeURIComponent(email)}`;
 
     const { error: emailError } = await resend.emails.send({
-      from: 'Andrian Cahyono <newsletter@cyns.space>',
+      from: 'Andrian Cahyono <onboarding@resend.dev>',
       to: email,
       subject: 'Verify your subscription to Andrian\'s Blog',
       html: `
@@ -123,23 +124,23 @@ export default async function handler(event: any) {
 
     if (emailError) {
       console.error('Email error:', emailError);
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: 'Failed to send verification email' }),
-      };
+      return new Response(JSON.stringify({ error: 'Failed to send verification email' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ 
-        message: 'Please check your email to verify your subscription!' 
-      }),
-    };
+    return new Response(JSON.stringify({ 
+      message: 'Please check your email to verify your subscription!' 
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch (error) {
     console.error('Subscribe error:', error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Something went wrong' }),
-    };
+    return new Response(JSON.stringify({ error: 'Something went wrong' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

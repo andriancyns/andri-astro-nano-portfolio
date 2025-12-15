@@ -5,25 +5,25 @@ const supabaseKey = process.env.PUBLIC_SUPABASE_ANON_KEY!;
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default async function handler(event: any) {
+export default async function handler(request: Request) {
   // Only allow GET
-  if (event.httpMethod !== 'GET') {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: 'Method not allowed' }),
-    };
+  if (request.method !== 'GET') {
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   try {
-    const params = event.queryStringParameters || {};
-    const { token, email } = params;
+    const url = new URL(request.url);
+    const token = url.searchParams.get('token');
+    const email = url.searchParams.get('email');
 
     if (!token || !email) {
-      return {
-        statusCode: 400,
+      return new Response(generateHtml('error', 'Invalid verification link'), {
+        status: 400,
         headers: { 'Content-Type': 'text/html' },
-        body: generateHtml('error', 'Invalid verification link'),
-      };
+      });
     }
 
     // Find subscriber with matching token and email
@@ -35,19 +35,17 @@ export default async function handler(event: any) {
       .single();
 
     if (findError || !subscriber) {
-      return {
-        statusCode: 400,
+      return new Response(generateHtml('error', 'Invalid or expired verification link'), {
+        status: 400,
         headers: { 'Content-Type': 'text/html' },
-        body: generateHtml('error', 'Invalid or expired verification link'),
-      };
+      });
     }
 
     if (subscriber.verified) {
-      return {
-        statusCode: 200,
+      return new Response(generateHtml('success', 'Your email is already verified!'), {
+        status: 200,
         headers: { 'Content-Type': 'text/html' },
-        body: generateHtml('success', 'Your email is already verified!'),
-      };
+      });
     }
 
     // Update subscriber as verified
@@ -62,25 +60,22 @@ export default async function handler(event: any) {
 
     if (updateError) {
       console.error('Update error:', updateError);
-      return {
-        statusCode: 500,
+      return new Response(generateHtml('error', 'Failed to verify email'), {
+        status: 500,
         headers: { 'Content-Type': 'text/html' },
-        body: generateHtml('error', 'Failed to verify email'),
-      };
+      });
     }
 
-    return {
-      statusCode: 200,
+    return new Response(generateHtml('success', 'Email verified successfully! You will now receive newsletter updates.'), {
+      status: 200,
       headers: { 'Content-Type': 'text/html' },
-      body: generateHtml('success', 'Email verified successfully! You will now receive newsletter updates.'),
-    };
+    });
   } catch (error) {
     console.error('Verify error:', error);
-    return {
-      statusCode: 500,
+    return new Response(generateHtml('error', 'Something went wrong'), {
+      status: 500,
       headers: { 'Content-Type': 'text/html' },
-      body: generateHtml('error', 'Something went wrong'),
-    };
+    });
   }
 }
 

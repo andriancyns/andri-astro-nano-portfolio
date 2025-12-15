@@ -79,7 +79,7 @@ export default async function handler(request: Request) {
     const verifyUrl = `${siteUrl}/.netlify/functions/verify?token=${verificationToken}&email=${encodeURIComponent(email)}`;
 
     const { error: emailError } = await resend.emails.send({
-      from: 'Andrian Cahyono <onboarding@resend.dev>',
+      from: 'Andrian Cahyono <andrian@cyns.space>',
       to: email,
       subject: 'Verify your subscription to Andrian\'s Blog',
       html: `

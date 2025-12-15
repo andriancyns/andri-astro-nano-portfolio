@@ -108,7 +108,7 @@ const socials = [
                   href={product.links[0].url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="product-card product-card-clickable block"
+                  class="product-card product-card-single block"
                   style={`animation-delay: ${index * 50}ms`}
                 >
                   <div class="flex items-center gap-3 p-3">
@@ -155,52 +155,70 @@ const socials = [
                   </div>
                 </a>
               ) : (
-                /* Multiple links - show platform buttons */
+                /* Multiple links - expandable */
                 <div
-                  class="product-card"
+                  class="product-card product-card-expand"
+                  data-expandable
                   style={`animation-delay: ${index * 50}ms`}
                 >
-                  <div class="flex items-center gap-3 p-3">
-                    <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-lg flex-shrink-0">
-                      {product.icon}
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <div class="flex items-center gap-1.5">
-                        <span class="text-sm font-medium text-black dark:text-white truncate">
-                          {product.name}
-                        </span>
-                        {product.badge && (
-                          <span class="px-1.5 py-0.5 text-[10px] bg-green-500 text-white rounded-full">
-                            {product.badge}
-                          </span>
-                        )}
+                  <div class="product-header" data-toggle>
+                    <div class="flex items-center gap-3 p-3">
+                      <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-lg flex-shrink-0">
+                        {product.icon}
                       </div>
-                      <p class="text-xs opacity-50 truncate">
-                        {product.description}
-                      </p>
-                    </div>
-                    <span
-                      class={`text-xs font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
-                        product.price === "Free"
-                          ? "bg-green-500/20 text-green-500"
-                          : "opacity-70"
-                      }`}
-                    >
-                      {product.price}
-                    </span>
-                  </div>
-                  <div class="flex gap-1.5 px-3 pb-3">
-                    {product.links.map((link) => (
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="platform-btn"
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-1.5">
+                          <span class="text-sm font-medium text-black dark:text-white truncate">
+                            {product.name}
+                          </span>
+                          {product.badge && (
+                            <span class="px-1.5 py-0.5 text-[10px] bg-green-500 text-white rounded-full">
+                              {product.badge}
+                            </span>
+                          )}
+                        </div>
+                        <p class="text-xs opacity-50 truncate">
+                          {product.description}
+                        </p>
+                      </div>
+                      <span
+                        class={`text-xs font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
+                          product.price === "Free"
+                            ? "bg-green-500/20 text-green-500"
+                            : "opacity-70"
+                        }`}
                       >
-                        <span>{link.icon}</span>
-                        <span>{link.platform}</span>
-                      </a>
-                    ))}
+                        {product.price}
+                      </span>
+                      <svg
+                        class="w-4 h-4 opacity-40 flex-shrink-0 chevron transition-transform duration-200"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="product-options">
+                    <div class="flex gap-1.5 px-3 pb-3">
+                      {product.links.map((link) => (
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="platform-btn"
+                        >
+                          <span>{link.icon}</span>
+                          <span>{link.platform}</span>
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -269,6 +287,7 @@ const socials = [
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.2s ease;
+      overflow: hidden;
     }
 
     .product-card:hover {
@@ -276,14 +295,32 @@ const socials = [
       border-color: rgba(255, 255, 255, 0.12);
     }
 
-    .product-card-clickable {
-      cursor: pointer;
-    }
-
-    .product-card-clickable:hover {
+    .product-card-single:hover {
       background: rgba(34, 197, 94, 0.08);
       border-color: rgba(34, 197, 94, 0.25);
       transform: translateY(-1px);
+    }
+
+    .product-card-expand .product-header {
+      cursor: pointer;
+    }
+
+    .product-card-expand.expanded {
+      border-color: rgba(34, 197, 94, 0.25);
+    }
+
+    .product-card-expand.expanded .chevron {
+      transform: rotate(180deg);
+    }
+
+    .product-options {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out;
+    }
+
+    .product-card-expand.expanded .product-options {
+      max-height: 100px;
     }
 
     .platform-btn {
@@ -328,7 +365,8 @@ const socials = [
       border-color: rgba(0, 0, 0, 0.08);
     }
 
-    :global(.light) .product-card-clickable:hover {
+    :global(.light) .product-card-single:hover,
+    :global(.light) .product-card-expand.expanded {
       background: rgba(34, 197, 94, 0.08);
     }
 
@@ -341,4 +379,24 @@ const socials = [
       background: rgba(34, 197, 94, 0.1);
     }
   </style>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const expandables = document.querySelectorAll("[data-expandable]");
+
+      expandables.forEach((card) => {
+        const toggle = card.querySelector("[data-toggle]");
+        if (!toggle) return;
+
+        toggle.addEventListener("click", () => {
+          // Close other expanded cards
+          expandables.forEach((other) => {
+            if (other !== card) other.classList.remove("expanded");
+          });
+          // Toggle current
+          card.classList.toggle("expanded");
+        });
+      });
+    });
+  </script>
 </PageLayout>

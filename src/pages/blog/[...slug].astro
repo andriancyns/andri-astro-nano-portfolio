@@ -1,5 +1,7 @@
 ---
-import GiscusComments from '../../components/GiscusComments.astro';
+import GiscusComments from "../../components/GiscusComments.astro";
+import CopyCode from "../../components/CopyCode.astro";
+import ImageLightbox from "../../components/ImageLightbox.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
@@ -10,7 +12,7 @@ import ViewCounter from "@components/ViewCounter.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
-    .filter(post => !post.data.draft)
+    .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return posts.map((post) => ({
     params: { slug: post.slug },
@@ -31,13 +33,13 @@ const readingTimeDuration = getReadingTimeMinutes(post.body);
 const breadcrumbItems = [
   { name: "Home", url: "/" },
   { name: "Blog", url: "/blog" },
-  { name: post.data.title, url: `/blog/${post.slug}` }
+  { name: post.data.title, url: `/blog/${post.slug}` },
 ];
 ---
 
-<PageLayout 
-  title={`${post.data.title} | Blog Andrian Cahyono`} 
-  description={post.data.description} 
+<PageLayout
+  title={`${post.data.title} | Blog Andrian Cahyono`}
+  description={post.data.description}
   image={post.data.image ?? "/astro-nano.png"}
   structuredDataType="article"
   datePublished={post.data.date}
@@ -50,9 +52,7 @@ const breadcrumbItems = [
 >
   <Container>
     <div class="animate">
-      <BackToPrev href="/blog">
-        Back to blog
-      </BackToPrev>
+      <BackToPrev href="/blog"> Back to blog </BackToPrev>
     </div>
     <div class="space-y-1 my-10">
       <div class="animate flex items-center gap-1.5">
@@ -75,4 +75,6 @@ const breadcrumbItems = [
     </article>
     <GiscusComments />
   </Container>
+  <CopyCode />
+  <ImageLightbox />
 </PageLayout>

@@ -7,6 +7,8 @@ import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
 import ViewCounter from "@components/ViewCounter.astro";
+import CopyCode from "@components/CopyCode.astro";
+import ImageLightbox from "@components/ImageLightbox.astro";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects"))
@@ -76,4 +78,6 @@ const breadcrumbItems = [
       <Content />
     </article>
   </Container>
+  <CopyCode />
+  <ImageLightbox />
 </PageLayout>

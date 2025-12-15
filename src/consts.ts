@@ -28,6 +28,11 @@ export const PROJECTS: Metadata = {
   DESCRIPTION: "A collection of software engineering projects: web applications, mobile apps, and backend systems I've built using modern technologies.",
 };
 
+export const SERVICES: Metadata = {
+  TITLE: "Services | Andrian Cahyono - Freelance Software Engineer",
+  DESCRIPTION: "Freelance software engineering services: mobile app development, backend systems, web development, and technical consultation. Let's build your next project.",
+};
+
 export const SOCIALS: Socials = [
   {
     NAME: "services",

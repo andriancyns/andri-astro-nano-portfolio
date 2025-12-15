@@ -1,0 +1,116 @@
+---
+interface Props {
+  posts: Array<{
+    slug: string;
+    title: string;
+    description: string;
+    date: string;
+  }>;
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="blog-search-container">
+  <div class="relative">
+    <input
+      type="text"
+      id="blog-search-input"
+      placeholder="Search articles..."
+      class="w-full px-4 py-2 pl-10 border border-black/10 dark:border-white/10 rounded-lg bg-transparent focus:outline-none focus:border-black/30 dark:focus:border-white/30 transition-colors"
+    />
+    <svg
+      class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 opacity-50"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      />
+    </svg>
+  </div>
+  <div id="search-results" class="mt-4 hidden">
+    <div class="text-sm opacity-70 mb-2">
+      <span id="result-count">0</span> results found
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ posts }}>
+  const searchInput = document.getElementById('blog-search-input');
+  const searchResults = document.getElementById('search-results');
+  const resultCount = document.getElementById('result-count');
+  
+  // Get all blog post elements
+  const blogSections = document.querySelectorAll('[data-blog-section]');
+  const blogItems = document.querySelectorAll('[data-blog-item]');
+  
+  function normalizeText(text) {
+    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+  
+  function performSearch(query) {
+    const normalizedQuery = normalizeText(query.trim());
+    
+    if (!normalizedQuery) {
+      // Show all items and hide results count
+      blogItems.forEach(item => {
+        item.style.display = '';
+      });
+      blogSections.forEach(section => {
+        section.style.display = '';
+      });
+      searchResults.classList.add('hidden');
+      return;
+    }
+    
+    let matchCount = 0;
+    
+    // Filter items
+    blogItems.forEach(item => {
+      const title = normalizeText(item.getAttribute('data-title') || '');
+      const description = normalizeText(item.getAttribute('data-description') || '');
+      
+      const matches = title.includes(normalizedQuery) || description.includes(normalizedQuery);
+      
+      if (matches) {
+        item.style.display = '';
+        matchCount++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+    
+    // Hide empty year sections
+    blogSections.forEach(section => {
+      const visibleItems = section.querySelectorAll('[data-blog-item]:not([style*="display: none"])');
+      section.style.display = visibleItems.length > 0 ? '' : 'none';
+    });
+    
+    // Update results count
+    resultCount.textContent = matchCount.toString();
+    searchResults.classList.remove('hidden');
+  }
+  
+  // Debounce search
+  let debounceTimer;
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      performSearch(e.target.value);
+    }, 200);
+  });
+  
+  // Clear on escape
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      performSearch('');
+      searchInput.blur();
+    }
+  });
+</script>

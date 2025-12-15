@@ -1,0 +1,44 @@
+---
+import { AVAILABILITY } from "@consts";
+
+const statusConfig = {
+  available: {
+    color: "bg-green-500",
+    textColor: "text-green-600 dark:text-green-400",
+    borderColor: "border-green-500/30",
+    bgLight: "bg-green-50 dark:bg-green-500/10",
+    pulse: true
+  },
+  limited: {
+    color: "bg-yellow-500",
+    textColor: "text-yellow-600 dark:text-yellow-400",
+    borderColor: "border-yellow-500/30",
+    bgLight: "bg-yellow-50 dark:bg-yellow-500/10",
+    pulse: true
+  },
+  unavailable: {
+    color: "bg-red-500",
+    textColor: "text-red-600 dark:text-red-400",
+    borderColor: "border-red-500/30",
+    bgLight: "bg-red-50 dark:bg-red-500/10",
+    pulse: false
+  }
+};
+
+const config = statusConfig[AVAILABILITY.STATUS];
+---
+
+<div class={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border ${config.borderColor} ${config.bgLight}`}>
+  <span class="relative flex h-2.5 w-2.5">
+    {config.pulse && (
+      <span class={`animate-ping absolute inline-flex h-full w-full rounded-full ${config.color} opacity-75`}></span>
+    )}
+    <span class={`relative inline-flex rounded-full h-2.5 w-2.5 ${config.color}`}></span>
+  </span>
+  <span class={`text-sm font-medium ${config.textColor}`}>
+    {AVAILABILITY.MESSAGE}
+    {AVAILABILITY.STATUS === "unavailable" && AVAILABILITY.AVAILABLE_FROM && (
+      <span class="opacity-70"> • Back {AVAILABILITY.AVAILABLE_FROM}</span>
+    )}
+  </span>
+</div>

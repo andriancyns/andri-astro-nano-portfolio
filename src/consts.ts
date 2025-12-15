@@ -8,6 +8,14 @@ export const SITE: Site = {
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 };
 
+// Availability Status - Change this to update your availability across the site
+export const AVAILABILITY = {
+  STATUS: "available" as "available" | "limited" | "unavailable",
+  MESSAGE: "Available for new projects",
+  // Optional: set a date when you'll be available again if unavailable
+  AVAILABLE_FROM: null as string | null, // e.g., "January 2025"
+};
+
 export const HOME: Metadata = {
   TITLE: "Andrian Cahyono | Software Engineer | Backend & Mobile Developer", 
   DESCRIPTION: "Software Engineer specializing in backend development (Go/Laravel) and mobile applications (Android Java/Kotlin & Flutter). Building clean, scalable, and production-ready systems.",

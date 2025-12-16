@@ -1,7 +1,8 @@
 ---
 title: "Giscus, Tools yang Bikin Webmu Bisa Dikomentari oleh Pembacamu"
 description: "Giscus adalah tools open-source yang memungkinkan pengunjung web memberikan komentar menggunakan GitHub Discussions. Gratis, aman, dan mudah diintegrasikan."
-date: "Aug 11 2025"
+date: "2025-08-11"
+draft: false
 ---
 
 ![Giscus Comments Integration](https://images.unsplash.com/photo-1461468611824-46457c0e11fd?q=80&w=2940&auto=format&fit=crop)

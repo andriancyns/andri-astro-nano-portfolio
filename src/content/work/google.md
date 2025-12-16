@@ -1,7 +1,7 @@
 ---
 company: "Google"
 role: "Staff Software Engineer"
-dateStart: "11/27/2022"
+dateStart: "2022-11-27"
 dateEnd: "Current"
 ---
 

@@ -2,10 +2,7 @@
 title: "Random Forest-Based Recommendation System - Academic Staff and Administrative Staff Case"
 description: "This project is a comprehensive machine learning solution focused on building and evaluating a Random Forest-based classification system for academic staff (dosen) and administrative staff (tendik) recommendations. The solution covers the full data science pipeline, from data preprocessing and feature engineering to model selection, hyperparameter optimization, and interpretability analysis."
 date: "Aug 2024"
-demoURL: ""
-status: completed
-titleEn: "Random Forest-Based Recommendation System - Academic Staff and Administrative Staff Case"
-descriptionEn: "This project is a comprehensive machine learning solution focused on building and evaluating a Random Forest-based classification system for academic staff (dosen) and administrative staff (tendik) recommendations. The solution covers the full data science pipeline, from data preprocessing and feature engineering to model selection, hyperparameter optimization, and interpretability analysis."
+draft: false
 ---
 
 ![Random Forest-Based Recommedation System - Academic Staff Case](/random-forest-portfolio_visual.png)

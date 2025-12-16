@@ -1,7 +1,8 @@
 ---
 title: "Tools Favorit Saya untuk Bikin Backend API Lebih Cepat dan Aman"
 description: "Pengalaman pribadi saya membangun backend API dengan cepat dan aman menggunakan tools andalan seperti Laravel, Postman, Docker, GitHub Actions, dan JWT."
-date: "Aug 9 2025"
+date: "2025-08-09"
+draft: false
 ---
 
 ![Ilustrasi Backend API](https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1740&auto=format&fit=crop)

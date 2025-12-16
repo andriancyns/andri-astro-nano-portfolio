@@ -2,9 +2,7 @@
 title: "Staria Coffee - ecommerce Platform (Web)"
 description: "Staria Coffee is a modern e-commerce platform I built by combining product thinking and AI-assisted coding using React and TailwindCSS. The project demonstrates how AI can accelerate software development without compromising product quality, while delivering a fast, responsive, and user-friendly shopping experience."
 date: "Aug 25, 2025"
-status: completed
-titleEn: "Staria Coffee - E-commerce Platform (Web)"
-descriptionEn: "Staria Coffee is a modern e-commerce platform I developed by combining product thinking with AI-assisted coding using React and TailwindCSS. The project demonstrates how AI can accelerate development while maintaining high-quality, user-focused product delivery."
+draft: false
 demoURL: "https://tokokopistaria.pages.dev/"
 ---
 
@@ -73,4 +71,4 @@ With this platform, Staria Coffee can expand into the online market, increase re
 - Authentication & user management  
 - Payment gateway integration  
 - Admin dashboard  
-- Analytics & reporting system  
+- Analytics & reporting system

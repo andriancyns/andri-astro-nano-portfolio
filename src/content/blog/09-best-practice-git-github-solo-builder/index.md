@@ -1,10 +1,9 @@
 ---
 title: "Best Practice Git & GitHub Management untuk Solo Builder"
-slug: "best-practice-git-github-solo-builder"
 description: "Tips dan best practice menggunakan Git & GitHub untuk solo builder agar workflow tetap rapi, scalable, dan siap kolaborasi jika tim bertambah."
-date: "Aug 26 2025"
-tags: ["Git", "GitHub", "Solo Builder", "Version Control", "Best Practices", "Developer Workflow"]
-keywords: ["best practice git", "best practice github", "solo builder workflow", "git management freelance", "github solo dev"]
+date: "2025-08-26"
+draft: false
+tags: ["Git","GitHub","Solo Builder","Version Control","Best Practices","Developer Workflow"]
 ---
 
 ![Ilustrasi Git dan GitHub untuk Solo Builder](git-github-solo.png)

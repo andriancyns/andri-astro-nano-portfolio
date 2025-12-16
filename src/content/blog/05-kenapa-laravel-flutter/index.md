@@ -1,12 +1,9 @@
 ---
 title: "Kenapa Saya Pilih Laravel + Flutter untuk Membangun Aplikasi dari Nol?"
-slug: "kenapa-laravel-flutter"
 description: "Alasan saya memilih kombinasi Laravel dan Flutter untuk membangun aplikasi dari nol — dari sisi kecepatan, fleksibilitas, hingga efisiensi biaya."
-date: "Aug 13 2025"
-tags: ["Laravel", "Flutter", "Fullstack Development", "Mobile App", "Backend API", "Cross Platform"]
-keywords: ["laravel flutter", "kenapa pilih laravel", "kenapa pilih flutter", "membangun aplikasi dari nol", "laravel untuk backend", "flutter untuk mobile"]
-titleEn: "Why I Choose Laravel + Flutter to Build Applications from Scratch?"
-descriptionEn: "My reasons for choosing the Laravel and Flutter combination to build applications from scratch — from speed, flexibility, to cost efficiency."
+date: "2025-08-13"
+draft: false
+tags: ["Laravel","Flutter","Fullstack Development","Mobile App","Backend API","Cross Platform"]
 ---
 
 ![Ilustrasi kombinasi Laravel sebagai backend framework dan Flutter untuk mobile app development, menunjukkan ekosistem fullstack modern](laravel-flutter-illustration.png)

@@ -1,10 +1,9 @@
 ---
 title: "Kenapa Logging & Monitoring Itu Wajib Sejak Hari Pertama Deploy"
-slug: "logging-monitoring-wajib"
 description: "Logging & monitoring sering dianggap hal sepele. Padahal, tanpa ini, debugging di production bisa jadi mimpi buruk. Inilah alasan kenapa harus dipasang sejak hari pertama deploy."
-date: "Sep 7 2025"
-tags: ["Backend Development", "System Design", "Logging", "Monitoring", "Best Practices", "DevOps"]
-keywords: ["logging monitoring", "kenapa logging penting", "monitoring aplikasi", "logging best practice", "observability", "debugging production"]
+date: "2025-09-07"
+draft: false
+tags: ["Backend Development","System Design","Logging","Monitoring","Best Practices","DevOps"]
 ---
 
 ![Ilustrasi Logging dan Monitoring](logging-monitoring.png)

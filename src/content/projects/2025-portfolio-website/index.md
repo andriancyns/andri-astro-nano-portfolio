@@ -1,12 +1,10 @@
 ---
 title: "Personal Portfolio Website - Modern Developer Showcase"
 description: "A high-performance, SEO-optimized personal portfolio built with Astro and modern web technologies. Features include blog with view counter, project showcase, structured data for SEO, and seamless deployment pipeline."
-date: "Dec 15 2025"
+date: "2025-12-15"
+draft: false
 demoURL: "https://cyns.space"
 repoURL: "https://github.com/andriancyns/andri-astro-nano-portfolio"
-status: completed
-titleEn: "Personal Portfolio Website - Modern Developer Showcase"
-descriptionEn: "A high-performance, SEO-optimized personal portfolio built with Astro and modern web technologies. Features include blog with view counter, project showcase, structured data for SEO, and seamless deployment pipeline."
 ---
 
 ![Personal Portfolio Website - Modern Developer Showcase](/portfolio-thumb.png)

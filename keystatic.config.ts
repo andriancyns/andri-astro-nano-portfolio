@@ -15,10 +15,11 @@ export default config({
       slugField: 'title',
       path: 'src/content/blog/*/',
       format: { contentField: 'content' },
+      entryLayout: 'content',
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         description: fields.text({ label: 'Description', multiline: true }),
-        date: fields.date({ label: 'Date', validation: { isRequired: true } }),
+        date: fields.date({ label: 'Date' }),
         draft: fields.checkbox({ label: 'Draft', defaultValue: false }),
         image: fields.image({
           label: 'Cover Image',
@@ -29,13 +30,14 @@ export default config({
           fields.text({ label: 'Tag' }),
           { label: 'Tags', itemLabel: (props) => props.value }
         ),
-        content: fields.mdx({
+        content: fields.document({
           label: 'Content',
-          options: {
-            image: {
-              directory: 'public/images/blog',
-              publicPath: '/images/blog/',
-            },
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: 'public/images/blog',
+            publicPath: '/images/blog/',
           },
         }),
       },
@@ -45,20 +47,22 @@ export default config({
       slugField: 'title',
       path: 'src/content/projects/*/',
       format: { contentField: 'content' },
+      entryLayout: 'content',
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         description: fields.text({ label: 'Description', multiline: true }),
-        date: fields.date({ label: 'Date', validation: { isRequired: true } }),
+        date: fields.date({ label: 'Date' }),
         draft: fields.checkbox({ label: 'Draft', defaultValue: false }),
         demoURL: fields.url({ label: 'Demo URL' }),
         repoURL: fields.url({ label: 'Repository URL' }),
-        content: fields.mdx({
+        content: fields.document({
           label: 'Content',
-          options: {
-            image: {
-              directory: 'public/images/projects',
-              publicPath: '/images/projects/',
-            },
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: 'public/images/projects',
+            publicPath: '/images/projects/',
           },
         }),
       },
@@ -70,10 +74,14 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         company: fields.slug({ name: { label: 'Company' } }),
-        role: fields.text({ label: 'Role', validation: { isRequired: true } }),
-        dateStart: fields.date({ label: 'Start Date', validation: { isRequired: true } }),
-        dateEnd: fields.text({ label: 'End Date (or "Present")' }),
-        content: fields.mdx({ label: 'Content' }),
+        role: fields.text({ label: 'Role' }),
+        dateStart: fields.date({ label: 'Start Date' }),
+        dateEnd: fields.text({ label: 'End Date (leave empty for "Present")' }),
+        content: fields.document({
+          label: 'Content',
+          formatting: true,
+          links: true,
+        }),
       },
     }),
   },

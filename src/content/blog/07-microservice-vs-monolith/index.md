@@ -1,10 +1,9 @@
 ---
 title: "Microservice vs Monolith"
-slug: "microservice-vs-monolith"
 description: "Perbandingan praktis antara arsitektur monolith dan microservices: kapan memilih, biaya tersembunyi, kompleksitas operasional, hingga jalur migrasi yang aman."
-date: "Aug 19 2025"
-tags: ["System Design", "Architecture", "Backend Development", "Monolith", "Microservices", "DevOps"]
-keywords: ["microservice vs monolith", "kapan pilih microservices", "monolith scalable", "arsitektur backend", "migrasi microservices", "system design untuk startup"]
+date: "2025-08-19"
+draft: false
+tags: ["System Design","Architecture","Backend Development","Monolith","Microservices","DevOps"]
 ---
 
 ![Ilustrasi Microservice vs Monolith](microservice-vs-monolith.png)

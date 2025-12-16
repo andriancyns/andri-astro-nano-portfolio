@@ -1,10 +1,9 @@
 ---
 title: "Caching 101: Kapan Harus Cache, Kapan Jangan"
-slug: "caching-101-kapan-cache"
 description: "Caching bisa bikin aplikasi lebih cepat, tapi salah pakai bisa jadi bumerang. Artikel ini membahas dasar-dasar caching, kapan harus dipakai, dan kapan lebih baik dihindari."
-date: "Sep 5 2025"
-tags: ["Backend Development", "System Design", "Caching", "Performance", "Best Practices"]
-keywords: ["caching 101", "kapan harus cache", "kapan jangan cache", "caching best practice", "system design cache"]
+date: "2025-09-05"
+draft: false
+tags: ["Backend Development","System Design","Caching","Performance","Best Practices"]
 ---
 
 ![Ilustrasi Caching](caching-101-kapan-cache.png)

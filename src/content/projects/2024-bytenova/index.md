@@ -1,11 +1,9 @@
 ---
 title: "Bytenova - Green Energy Solutions Modern Website"
 description: "Bytenova is a green energy solutions company that provides sustainable energy solutions to businesses and individuals."
-date: "Mar 26 2024"
+date: "2024-03-26"
+draft: false
 demoURL: "https://bytenova.vercel.app/"
-status: completed
-titleEn: "Bytenova - Green Energy Solutions Modern Website"
-descriptionEn: "Bytenova is a green energy solutions company that provides sustainable energy solutions to businesses and individuals."
 ---
 
 ![Bytenova green energy solutions website landing page featuring sustainable energy services and modern eco-friendly design](/bytenova/thumb.png)

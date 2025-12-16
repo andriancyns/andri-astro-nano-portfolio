@@ -2,10 +2,8 @@
 title: "MAIA Suppco – Asset Management Mobile Application (Android)"
 description: "MAIA Suppco is a comprehensive Android application designed to streamline and digitize asset management processes for organizations, particularly in the plantation and agribusiness sector. The app enables users to manage, track, and report on physical assets efficiently, both online and offline, ensuring business continuity in areas with limited connectivity."
 date: "Dec 2024"
+draft: false
 demoURL: "https://play.google.com/store/apps/details?id=ptapn.maia.suppco&hl=en_IN"
-status: completed
-titleEn: "MAIA Suppco – Asset Management Mobile Application (Android)"
-descriptionEn: "MAIA Suppco is a comprehensive Android application designed to streamline and digitize asset management processes for organizations, particularly in the plantation and agribusiness sector. The app enables users to manage, track, and report on physical assets efficiently, both online and offline, ensuring business continuity in areas with limited connectivity."
 ---
 
 ![MAIA Suppco - Asset Management Mobile Application](/maia-ptpn.png)

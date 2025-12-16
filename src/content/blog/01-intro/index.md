@@ -1,9 +1,8 @@
 ---
 title: "Mari Kita Mulai"
 description: "Ini tulisan pertama saya. Nggak muluk-muluk. Nggak ada gimmick. Cuma ingin mulai aja."
-date: "Jul 24 2025"
-titleEn: "Let's Get Started"
-descriptionEn: "This is my first post. Nothing fancy. No gimmicks. Just want to get started."
+date: "2025-07-24"
+draft: false
 ---
 
 ### Halo, saya Andrian.
@@ -28,6 +27,3 @@ Gak janji rutin. Gak janji konsisten.
 Jadi, kalau kamu juga lagi mulai sesuatu dari nol <br>
 Entah itu belajar, bikin karya, atau nyari arah <br>
 Selamat datang. Kita mulai bareng-bareng.
-
-
-

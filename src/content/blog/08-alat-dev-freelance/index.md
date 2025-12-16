@@ -1,10 +1,9 @@
 ---
 title: "5 Alat yang Selalu Saya Pakai untuk Dev Freelance"
-slug: "alat-dev-freelance"
 description: "Sebagai developer freelance, saya punya 5 tools andalan yang selalu dipakai untuk jaga produktivitas, komunikasi dengan client, dan bikin kerjaan jadi lebih efisien."
-date: "Aug 24 2025"
-tags: ["Freelance", "Productivity Tools", "Developer Workflow", "Remote Work"]
-keywords: ["tools freelance developer", "alat kerja freelance dev", "tools wajib freelance", "software untuk freelancer", "alat developer produktif"]
+date: "2025-08-24"
+draft: false
+tags: ["Freelance","Productivity Tools","Developer Workflow","Remote Work"]
 ---
 
 ![Ilustrasi Tools Freelance Developer](alat-dev-freelance.png)

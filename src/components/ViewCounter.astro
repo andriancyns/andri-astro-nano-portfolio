@@ -31,16 +31,52 @@ try {
   // Check if user has already viewed this post in this session
   const sessionKey = `blog-session-${slug}`;
   const hasViewedInSession = sessionStorage.getItem(sessionKey);
+  const viewElement = document.getElementById(`views-${slug}`);
+
+  // Function to update the view count display
+  function updateViewDisplay(count) {
+    if (viewElement) {
+      viewElement.textContent = count.toString();
+    }
+  }
+
+  // Fetch the latest view count from Supabase (for real-time display)
+  async function fetchLatestViewCount() {
+    if (!supabaseUrl || !supabaseKey) return;
+
+    try {
+      const response = await fetch(
+        `${supabaseUrl}/rest/v1/page_views?slug=eq.${encodeURIComponent(slug)}&select=views`,
+        {
+          headers: {
+            apikey: supabaseKey,
+            Authorization: `Bearer ${supabaseKey}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data && data.length > 0) {
+          updateViewDisplay(data[0].views || 0);
+        }
+      }
+    } catch (error) {
+      console.error("Failed to fetch latest view count:", error);
+    }
+  }
 
   async function incrementViewOnServer() {
     if (!supabaseUrl || !supabaseKey) {
-      console.warn("Supabase not configured");
-      return;
+      console.warn(
+        "Supabase not configured - check PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY environment variables"
+      );
+      return false;
     }
 
     try {
       // First, get current count
-      const response = await fetch(
+      const getResponse = await fetch(
         `${supabaseUrl}/rest/v1/page_views?slug=eq.${encodeURIComponent(slug)}`,
         {
           headers: {
@@ -51,12 +87,21 @@ try {
         }
       );
 
-      const data = await response.json();
+      if (!getResponse.ok) {
+        console.error(
+          "Failed to fetch view count:",
+          getResponse.status,
+          await getResponse.text()
+        );
+        return false;
+      }
+
+      const data = await getResponse.json();
 
       if (data && data.length > 0) {
         // Update existing record
         const newViews = (data[0].views || 0) + 1;
-        await fetch(
+        const updateResponse = await fetch(
           `${supabaseUrl}/rest/v1/page_views?slug=eq.${encodeURIComponent(slug)}`,
           {
             method: "PATCH",
@@ -73,44 +118,81 @@ try {
           }
         );
 
-        // Update display
-        const element = document.getElementById(`views-${slug}`);
-        if (element) {
-          element.textContent = newViews.toString();
+        if (!updateResponse.ok) {
+          const errorText = await updateResponse.text();
+          console.error(
+            "Failed to update view count:",
+            updateResponse.status,
+            errorText
+          );
+          // Check for RLS policy error
+          if (updateResponse.status === 403 || errorText.includes("policy")) {
+            console.error(
+              "RLS Policy Error: Make sure INSERT and UPDATE policies are enabled for anonymous users on the page_views table in Supabase."
+            );
+          }
+          return false;
         }
+
+        // Update display after successful increment
+        updateViewDisplay(newViews);
+        return true;
       } else {
         // Insert new record
-        await fetch(`${supabaseUrl}/rest/v1/page_views`, {
-          method: "POST",
-          headers: {
-            apikey: supabaseKey,
-            Authorization: `Bearer ${supabaseKey}`,
-            "Content-Type": "application/json",
-            Prefer: "return=representation",
-          },
-          body: JSON.stringify({
-            slug: slug,
-            views: 1,
-            updated_at: new Date().toISOString(),
-          }),
-        });
+        const insertResponse = await fetch(
+          `${supabaseUrl}/rest/v1/page_views`,
+          {
+            method: "POST",
+            headers: {
+              apikey: supabaseKey,
+              Authorization: `Bearer ${supabaseKey}`,
+              "Content-Type": "application/json",
+              Prefer: "return=representation",
+            },
+            body: JSON.stringify({
+              slug: slug,
+              views: 1,
+              updated_at: new Date().toISOString(),
+            }),
+          }
+        );
 
-        // Update display
-        const element = document.getElementById(`views-${slug}`);
-        if (element) {
-          element.textContent = "1";
+        if (!insertResponse.ok) {
+          const errorText = await insertResponse.text();
+          console.error(
+            "Failed to insert view count:",
+            insertResponse.status,
+            errorText
+          );
+          // Check for RLS policy error
+          if (insertResponse.status === 403 || errorText.includes("policy")) {
+            console.error(
+              "RLS Policy Error: Make sure INSERT policy is enabled for anonymous users on the page_views table in Supabase."
+            );
+          }
+          return false;
         }
+
+        // Update display after successful insert
+        updateViewDisplay(1);
+        return true;
       }
     } catch (error) {
       console.error("Failed to increment view:", error);
+      return false;
     }
   }
 
-  if (!hasViewedInSession) {
-    // Mark as viewed in this session first to prevent double counting
-    sessionStorage.setItem(sessionKey, "true");
+  // Always fetch the latest count on page load (overrides build-time static value)
+  fetchLatestViewCount();
 
-    // Increment view count on server
-    incrementViewOnServer();
+  if (!hasViewedInSession) {
+    // Try to increment view count on server
+    incrementViewOnServer().then((success) => {
+      if (success) {
+        // Only mark as viewed after successful increment
+        sessionStorage.setItem(sessionKey, "true");
+      }
+    });
   }
 </script>

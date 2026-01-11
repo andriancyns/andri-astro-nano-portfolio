@@ -66,7 +66,9 @@ A tutor that asks questions back.
 #### ⚡ Performance Optimization
 - Image Optimization: Automatic format conversion (WebP/AVIF) and layout shift protection.
 - Code Splitting: Automatic chunking of React components.
-- Perfect Lighthouse Scores: Consistently hitting 95-100 in Performance, Accessibility, and Best Practices.
+- Perfect Lighthouse Scores: Consistently hitting 99-100 in Performance, Accessibility, and Best Practices.
+
+![Lighthouse Score](lighthouse-score.png)
 
 ### 📂 Code Quality & Standards
 - Strict TypeScript: No any types. All props and API responses are strictly typed.

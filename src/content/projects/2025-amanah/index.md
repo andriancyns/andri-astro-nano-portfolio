@@ -1,18 +1,18 @@
 ---
-title: "SAPA AMANAH - Compliance Monitoring Application (iOS/Android)"
-description: "SAPA AMANAH is a Flutter-based mobile application I developed for PT Perkebunan Nusantara I, one of Indonesia's largest state-owned plantation enterprises. The application was designed to digitize monitoring and reporting processes in the plantation sector that were previously performed manually, resulting in operational inefficiencies and difficulties in data-driven decision making."
+title: "Compliance Monitoring Application (iOS/Android)"
+description: "This is a Flutter-based mobile application I developed for PT Perkebunan Nusantara I, one of Indonesia's largest state-owned plantation enterprises. The application was designed to digitize monitoring and reporting processes in the plantation sector that were previously performed manually, resulting in operational inefficiencies and difficulties in data-driven decision making."
 date: "12 Mar 2025"
 draft: false
 ---
 
-![SAPA AMANAH - Compliance Monitoring Application](/amanah.png)
+![Compliance Monitoring Application](/amanah.png)
 
 - 🟢 **Status:** MVP completed; ongoing development for additional features
 - 🟡 **Availability:** Debug version available for internal testing
 - 📅 **Release Timeline:** Scheduled for public release on <span style="color:#3DDC84;">Play Store</span> and <span style="color:#007AFF;">App Store</span> in 2025
 
 ## 📖 Project Overview
-SAPA AMANAH is a Flutter-based mobile application I developed for PT Perkebunan Nusantara I, one of Indonesia's largest state-owned plantation enterprises. The application was designed to digitize monitoring and reporting processes in the plantation sector that were previously performed manually, resulting in operational inefficiencies and difficulties in data-driven decision making.
+This is a Flutter-based mobile application I developed for Agriculture Company, one of Indonesia's largest state-owned plantation enterprises. The application was designed to digitize monitoring and reporting processes in the plantation sector that were previously performed manually, resulting in operational inefficiencies and difficulties in data-driven decision making.
 
 ## 💻 Tech Stack
 - **Frontend:** Flutter 2.8+ with clean architecture approach

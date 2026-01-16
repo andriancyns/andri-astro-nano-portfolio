@@ -4,7 +4,7 @@ description: "Staria Coffee is a modern e-commerce platform I built by combining
 date: "Aug 25, 2025"
 draft: false
 demoURL: "https://tokokopistaria.pages.dev/"
-status: "ongoing"
+status: "completed"
 ---
 
 ![Staria Coffee E-commerce Platform](staria.png)

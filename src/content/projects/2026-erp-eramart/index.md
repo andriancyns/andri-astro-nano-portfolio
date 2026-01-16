@@ -3,6 +3,7 @@ title: "Eramart ERP Panel"
 description: "is a comprehensive Enterprise Resource Planning (ERP) system designed for retail and distribution businesses. The system manages the complete business cycle from purchasing, inventory management, to financial transactions."
 date: "2025-06-15"
 draft: false
+status: "ongoing"
 # demoURL: "https://borobudur-learning.vercel.app"
 # repoURL: "https://github.com/andriancyns/andri-astro-nano-portfolio"
 ---

@@ -11,33 +11,32 @@ type ProjectEntry = CollectionEntry<"projects">;
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
   .sort((a, b) => {
-    // Try to parse year from date string or Date object
-    const getYear = (d: string | Date) => {
-      if (typeof d === "string") {
-        const y = d.match(/\d{4}/);
-        return y ? parseInt(y[0]) : 0;
-      }
-      if (d instanceof Date) return d.getFullYear();
-      return 0;
-    };
-    return getYear(b.data.date as string | Date) - getYear(a.data.date as string | Date);
+    const getStatusWeight = (entry: ProjectEntry) =>
+      entry.data.status === "ongoing" ? 0 : 1;
+    const statusDiff = getStatusWeight(a) - getStatusWeight(b);
+    if (statusDiff !== 0) return statusDiff;
+    return b.data.date.valueOf() - a.data.date.valueOf();
   });
 
-// Group projects by year only
-const grouped: Record<string, ProjectEntry[]> = {};
+const ongoingProjects: ProjectEntry[] = [];
+const completedProjects: ProjectEntry[] = [];
 for (const project of projects) {
-  let year = "Unknown";
-  const dateVal = project.data.date as string | Date;
-  if (typeof dateVal === "string") {
-    const y = dateVal.match(/\d{4}/);
-    if (y) year = y[0];
-  } else if (dateVal instanceof Date) {
-    year = String(dateVal.getFullYear());
+  if (project.data.status === "ongoing") {
+    ongoingProjects.push(project);
+  } else {
+    completedProjects.push(project);
   }
-  if (!grouped[year]) grouped[year] = [];
-  grouped[year].push(project);
 }
-const sortedYears = Object.keys(grouped).sort((a, b) => parseInt(b) - parseInt(a));
+
+const groupedCompleted: Record<string, ProjectEntry[]> = {};
+for (const project of completedProjects) {
+  const year = String(project.data.date.getFullYear());
+  if (!groupedCompleted[year]) groupedCompleted[year] = [];
+  groupedCompleted[year].push(project);
+}
+const sortedYears = Object.keys(groupedCompleted).sort(
+  (a, b) => parseInt(b) - parseInt(a)
+);
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
@@ -47,11 +46,21 @@ const sortedYears = Object.keys(grouped).sort((a, b) => parseInt(b) - parseInt(a
         Projects
       </div>
       <div class="animate flex flex-col gap-8">
+        {ongoingProjects.length > 0 && (
+          <section>
+            <h2 class="text-xl font-bold mb-2">In Progress</h2>
+            <ul class="flex flex-col gap-3 mb-4">
+              {ongoingProjects.map((project) => (
+                <li><ArrowCard entry={project} /></li>
+              ))}
+            </ul>
+          </section>
+        )}
         {sortedYears.map(year => (
           <section>
             <h2 class="text-xl font-bold mb-2">{year}</h2>
             <ul class="flex flex-col gap-3 mb-4">
-              {grouped[year].map((project) => (
+              {groupedCompleted[year].map((project) => (
                 <li><ArrowCard entry={project} /></li>
               ))}
             </ul>

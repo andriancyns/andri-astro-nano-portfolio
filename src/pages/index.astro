@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
@@ -8,6 +9,8 @@ import AvailabilityBadge from "@components/AvailabilityBadge.astro";
 import NewsletterForm from "@components/NewsletterForm.astro";
 import { SITE, HOME, SOCIALS } from "@consts";
 
+type ProjectEntry = CollectionEntry<"projects">;
+
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -15,7 +18,13 @@ const blog = (await getCollection("blog"))
 
 const projects = (await getCollection("projects"))
   .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .sort((a, b) => {
+    const getStatusWeight = (entry: ProjectEntry) =>
+      entry.data.status === "ongoing" ? 0 : 1;
+    const statusDiff = getStatusWeight(a as ProjectEntry) - getStatusWeight(b as ProjectEntry);
+    if (statusDiff !== 0) return statusDiff;
+    return b.data.date.valueOf() - a.data.date.valueOf();
+  })
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 ---
 

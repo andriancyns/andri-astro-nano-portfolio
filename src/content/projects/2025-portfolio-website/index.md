@@ -13,6 +13,21 @@ repoURL: "https://github.com/andriancyns/andri-astro-nano-portfolio"
 - 🌐 **Live Demo:** [cyns.space](https://cyns.space)
 - 📂 **Source Code:** [GitHub Repository](https://github.com/andriancyns/andri-astro-nano-portfolio)
 
+## 🎯 Business Context & Goals
+- Build a professional online presence that clearly communicates my skills to clients.
+- Create a content hub for articles, projects, and experiments that supports inbound leads.
+- Ensure the site is fast and SEO-friendly so it can be discovered organically.
+
+## 🧩 My Role & Responsibilities
+- Designed the information architecture, visual style, and content strategy.
+- Implemented the entire stack: frontend, content layer, analytics, and deployment.
+- Continuously iterate on features (view counter, structured data, newsletter, etc.).
+
+## 📊 Impact & Outcomes
+- Serves as the primary touchpoint for clients and collaborators to understand my work.
+- Achieves perfect Lighthouse scores, demonstrating my ability to ship production-grade frontends.
+- Provides a reusable blueprint for building similar portfolios and marketing sites for clients.
+
 ## 📖 Project Overview
 
 As a freelance software engineer, having a professional online presence is essential for attracting clients and showcasing expertise. This portfolio website was built from the ground up to serve as my digital business card—demonstrating not just my work, but my ability to deliver modern, performant, and user-friendly web experiences.

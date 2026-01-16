@@ -11,6 +11,20 @@ demoURL: "https://smkyapalis-krian.sch.id"
 > **Status:** ✅ This project is **fully completed** and publicly accessible.  
 > You can explore the live system here: <a href="https://smkyapalis-krian.sch.id" target="_blank" rel="noopener noreferrer">smkyapalis-krian.sch.id</a>
 
+## 🎯 Business Context & Goals
+- Help a vocational high school move from manual paperwork to a unified digital system.
+- Improve data accuracy, transparency, and speed of daily academic and administrative workflows.
+- Support better decision-making through dashboards and integrated reporting.
+
+## 🧩 My Role & Responsibilities
+- Designed and developed the entire school management platform end-to-end.
+- Modeled academic, financial, and operational processes into coherent system modules.
+- Handled deployment, training, and post-launch iteration based on user feedback.
+
+## 📊 Impact & Outcomes
+- Reduced administrative workload and improved data quality across the institution.
+- Accelerated key processes like attendance, assessment, and payments.
+- Supported overall academic performance management through better visibility and control.
 
 ## 📖 Project Overview
 Designed and developed a comprehensive school management system for SMK Yapalis Krian Sidoarjo, transforming manual administrative processes into an integrated digital platform. The solution streamlined operations, enhanced data management efficiency, and supported overall academic performance improvement.

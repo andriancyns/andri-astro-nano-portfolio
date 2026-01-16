@@ -11,6 +11,21 @@ demoURL: "https://bytenova.vercel.app/"
 > **Status:** ✅ This project is **complete** and **live**.  
 > You can explore the live demo here: <a href="https://bytenova.vercel.app/" target="_blank" rel="noopener noreferrer">bytenova.vercel.app</a>
 
+## 🎯 Business Context & Goals
+- Present Bytenova as a credible, modern green energy brand to potential clients and partners.
+- Communicate complex sustainability offerings in a simple, web-friendly way.
+- Support lead generation through a fast, SEO-optimized marketing site.
+
+## 🧩 My Role & Responsibilities
+- Designed and implemented the landing page, navigation, and key product sections.
+- Built interactive elements (sliders, calculators, testimonials) to explain services clearly.
+- Ensured the site is performant and mobile-friendly for a wide audience.
+
+## 📊 Impact & Outcomes
+- Provides a professional online presence for a sustainability-focused company.
+- Helps visitors understand Bytenova’s value proposition and offerings at a glance.
+- Supports future marketing and content efforts via integrated blog and SEO foundation.
+
 ByteNova is a cutting-edge web platform focused on sustainable solutions for carbon emission reduction. Built with modern web technologies, this application delivers a seamless user experience while maintaining high performance and accessibility standards.
 
 

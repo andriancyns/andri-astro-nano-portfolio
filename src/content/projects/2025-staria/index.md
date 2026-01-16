@@ -14,6 +14,21 @@ status: "completed"
 - 🚀 **Status:** Active development and iteration
 - 📅 **Release Timeline:** Backend & payment gateway integration planned for 2025  
 
+## 🎯 Business Context & Goals
+- Help a local coffee brand move from purely offline and social-media sales to structured online orders.
+- Provide a fast, modern storefront that matches the brand’s identity and supports future growth.
+- Validate product-market fit for an e-commerce experience before investing in full backend build-out.
+
+## 🧩 My Role & Responsibilities
+- Acted as Product Engineer, owning UX, architecture, and implementation of the web frontend.
+- Translated business requirements (menu, promotions, checkout) into flows and UI components.
+- Prepared the codebase for future integration with APIs, payment gateways, and admin tools.
+
+## 📊 Impact & Outcomes
+- Delivered a production-ready frontend MVP in three weeks, ready to plug into backend services.
+- Dramatically improved the structure and speed of the ordering experience versus ad-hoc chats/DM.
+- Established a reusable design system and architecture that can scale into a full commerce platform.
+
 ## 📖 Problem & Solution
 Staria Coffee previously relied only on offline sales and social media. The ordering process was slow, unstructured, and difficult to scale.  
 

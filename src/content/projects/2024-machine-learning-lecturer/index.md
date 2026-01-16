@@ -10,6 +10,21 @@ draft: false
 > **Status:** 🔒 This project is **complete** but currently **private**.  
 > A public demo is not available at this time.
 
+## 🎯 Business Context & Goals
+- Support universities in making more objective, data-driven recommendations for academic and administrative staff.
+- Explore how historical performance and competency data can be translated into recommendation insights.
+- Build a robust, interpretable ML pipeline that can be adapted to similar HR/education contexts.
+
+## 🧩 My Role & Responsibilities
+- Led the entire data science lifecycle from problem framing to evaluation and reporting.
+- Designed and implemented the preprocessing, modeling, and validation strategy.
+- Communicated findings via visualizations and structured notebooks for non-technical stakeholders.
+
+## 📊 Impact & Outcomes
+- Produced a recommendation model with strong accuracy and balanced precision/recall.
+- Highlighted which features matter most, helping stakeholders understand drivers of recommendations.
+- Delivered a reusable framework that can be extended to other recommendation or ranking problems.
+
 This project is a comprehensive machine learning solution focused on building and evaluating a Random Forest-based classification system for academic staff (dosen) and administrative staff (tendik) recommendations. The solution covers the full data science pipeline, from data preprocessing and feature engineering to model selection, hyperparameter optimization, and interpretability analysis.
 
 ## Key Features & Technologies

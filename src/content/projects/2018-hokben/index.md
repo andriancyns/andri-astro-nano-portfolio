@@ -7,6 +7,21 @@ draft: false
 
 ![Hoka-Hoka Bento Inventory Management System](/2018-hokben.png)
 
+## 🎯 Business Context & Goals
+- Built for a multi-branch fast-food chain with complex inventory operations.
+- Reduce errors and inefficiencies from manual stock tracking and request processes.
+- Provide real-time visibility into stock levels, deliveries, and supplier performance.
+
+## 🧩 My Role & Responsibilities
+- Acted as lead developer responsible for architecture, implementation, and optimization.
+- Modeled inventory, logistics, and user roles into a cohesive web application.
+- Implemented reporting and analytics to support management decisions.
+
+## 📊 Impact & Outcomes
+- Reduced inventory discrepancies, stock-outs, and request processing time across stores.
+- Gave management clearer insight into operations through centralized dashboards and reports.
+- Laid a foundation that could be extended with mobile apps and predictive analytics.
+
 ## 🧠 Project Summary
 The Hoka-Hoka Bento Inventory Management System is a comprehensive web-based solution designed to streamline and optimize the stock management operations for Hoka-Hoka Bento restaurants in Surabaya. This system addresses the critical challenge of efficiently tracking, managing, and distributing inventory across multiple restaurant locations, ensuring optimal stock levels while minimizing waste and operational costs.
 

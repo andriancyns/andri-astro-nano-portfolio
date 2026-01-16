@@ -13,6 +13,21 @@ demoURL: "https://play.google.com/store/apps/details?id=com.ptpn12.oss&hl=en"
 
 The Off Farm Karet module is dedicated to managing and optimizing post-harvest rubber (karet) processing and logistics in plantation operations. "Off Farm" refers to activities that occur after the rubber is harvested, such as processing, storage, and transportation.
 
+## 🎯 Business Context & Goals
+- Support plantation operations in managing post-harvest rubber processing, storage, and logistics.
+- Replace manual tracking with structured, mobile-first workflows.
+- Provide supervisors with up-to-date visibility into inventory and movement of rubber products.
+
+## 🧩 My Role & Responsibilities
+- Enhanced and maintained the Android module used in daily post-harvest operations.
+- Strengthened existing features and added new ones based on operational feedback.
+- Ensured the module integrated smoothly with other parts of the OSS Planters ecosystem.
+
+## 📊 Impact & Outcomes
+- Improved accuracy and timeliness of data around rubber processing and distribution.
+- Helped reduce miscommunication and delays through better coordination features.
+- Contributed to more scalable, reliable plantation systems across multiple sites.
+
 ## My Role & Responsibilities
 - Contributed as an Android developer, focusing on enhancing and maintaining the Off Farm Karet module.
 - Improved existing features and added new functionalities to support post-harvest rubber operations.

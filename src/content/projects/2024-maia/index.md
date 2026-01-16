@@ -11,6 +11,21 @@ demoURL: "https://play.google.com/store/apps/details?id=ptapn.maia.suppco&hl=en_
 - **Project Status:** Completed (currently paused, awaiting additional feature development)
 - **Download:** [Get it on Google Play](https://play.google.com/store/apps/details?id=ptapn.maia.suppco&hl=en_IN)
 
+## 🎯 Business Context & Goals
+- Built for asset-heavy organizations in plantation and agribusiness sectors.
+- Replace spreadsheet-based and paper-based asset tracking with a structured mobile system.
+- Ensure asset data capture and control continues even in low-connectivity environments.
+
+## 🧩 My Role & Responsibilities
+- Led Android development from architecture design to Play Store deployment.
+- Designed offline-first patterns for asset data, photos, and user actions.
+- Collaborated with backend teams to align APIs with real operational workflows.
+
+## 📊 Impact & Outcomes
+- Enabled more reliable asset tracking and reporting across distributed field teams.
+- Improved data completeness and timeliness through guided, mobile-first workflows.
+- Provided a foundation that organizations can extend with more modules and reports.
+
 MAIA Suppco is a comprehensive Android application designed to streamline and digitize asset management processes for organizations, particularly in the plantation and agribusiness sector. The app enables users to manage, track, and report on physical assets efficiently, both online and offline, ensuring business continuity in areas with limited connectivity.
 
 ## Role

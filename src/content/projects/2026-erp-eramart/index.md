@@ -15,6 +15,21 @@ status: "ongoing"
 **Role:** Full-Stack Laravel Developer <br/>
 **Contribution:** Top Contributor (899 commits)
 
+## 🎯 Business Context & Goals
+- Retail and distribution business with complex multi-branch operations.
+- Needed a single ERP panel to unify purchasing, inventory, and finance flows.
+- Reduce manual reconciliation and spreadsheet-based reporting across departments.
+
+## 🧩 My Role & Responsibilities
+- Led end-to-end development of reporting, purchasing, and payment modules.
+- Designed database structures and query patterns for high-volume transactional data.
+- Collaborated with finance and operations teams to encode real-world workflows.
+
+## 📊 Impact & Outcomes
+- Centralized visibility into purchasing and stock positions across branches.
+- Faster financial and operational reporting through automated, exportable dashboards.
+- Reduced human error by enforcing validation, workflow status tracking, and standardized documents.
+
 ### Tech Stack
 - **Frontend:** PHP 7.4+, Laravel 8.x
 - **Backend:** Blade Templates, jQuery, Bootstrap 4

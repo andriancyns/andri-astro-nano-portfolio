@@ -11,6 +11,21 @@ demoURL: "https://play.google.com/store/apps/details?id=com.ptpn12.oss&hl=en"
 - 🟢 **Status:** Completed
 - 📱 **App Links:** <a href="https://play.google.com/store/apps/details?id=com.ptpn12.oss&hl=en" target="_blank" rel="noopener noreferrer">OSS Planters on Play Store</a>
 
+## 🎯 Business Context & Goals
+- Part of an enterprise platform used to manage day-to-day tea plantation operations.
+- Replace manual, paper-based tracking for attendance, production, and quality with a mobile workflow.
+- Give supervisors real-time visibility into what is happening in the field.
+
+## 🧩 My Role & Responsibilities
+- Sole Android developer responsible for architecture, implementation, and deployment.
+- Translated operational requirements from plantation stakeholders into flows and UI.
+- Ensured the module worked reliably in remote areas with poor connectivity.
+
+## 📊 Impact & Outcomes
+- Improved accuracy and timeliness of production and attendance data.
+- Helped supervisors and management make faster, better-informed decisions.
+- Delivered a module that became a core part of daily operations in the OSS Planters app.
+
 ## Overview
 As the sole Android developer, I architected, built, and delivered the entire On Farm Tea module for the OSS Planters app an enterprise solution for modernizing tea plantation management. I managed the project end-to-end, from requirements gathering and design to deployment and user training.
 

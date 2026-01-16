@@ -17,6 +17,21 @@ draft: false
 **Role:** AI Product Engineer <br/>
 **Tech Stack:** Astro 5, React 19, TypeScript, Tailwind CSS 4, Google Gemini AI, GSAP
 
+## 🎯 Business Context & Goals
+- Designed for educators, course creators, and EdTech startups needing a high-converting marketing site.
+- Bridge the gap between static landing pages and interactive learning tools.
+- Provide a template that can be quickly adapted to different education verticals.
+
+## 🧩 My Role & Responsibilities
+- Led product, UX, and engineering for the landing page and AI learning features.
+- Defined the experience for AI syllabus generation and Socratic tutoring.
+- Optimized performance and SEO so the template can rank and convert from day one.
+
+## 📊 Impact & Outcomes
+- Production-ready template with near-perfect Lighthouse scores on desktop and mobile.
+- Demonstrates to clients how AI can be integrated into education products without sacrificing speed.
+- Serves as a reusable asset for future consulting and product engagements in the EdTech space.
+
 ### 🚀 Executive Summary
 Designed and engineered Borobudur Learning, a high-performance educational platform that bridges the gap between static content and interactive AI-driven learning. By leveraging a hybrid architecture (Astro + React), the platform achieves near-instant load times (Lighthouse 95+ scores) while delivering complex, client-side interactive features like an AI Socratic Tutor and dynamic Syllabus Generator.
 

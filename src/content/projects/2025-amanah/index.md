@@ -12,6 +12,21 @@ status: "completed"
 - 🟡 **Availability:** Debug version available for internal testing
 - 📅 **Release Timeline:** Scheduled for public release on <span style="color:#3DDC84;">Play Store</span> and <span style="color:#007AFF;">App Store</span> in 2025
 
+## 🎯 Business Context & Goals
+- Built for a large state-owned plantation enterprise with highly distributed operations.
+- Replace manual, paper-based monitoring with a digital, auditable workflow.
+- Enable data-driven decisions through near real-time field and processing data.
+
+## 🧩 My Role & Responsibilities
+- Led mobile app development end-to-end using Flutter and clean architecture.
+- Worked closely with stakeholders to translate manual SOPs into digital flows.
+- Designed offline-first synchronization for field teams with poor connectivity.
+
+## 📊 Impact & Outcomes
+- Significantly reduced reporting time and manual consolidation across plantation units.
+- Improved accuracy and integrity of field data through GPS, photos, and validation rules.
+- Provided management with dashboards and KPIs that were previously unavailable.
+
 ## 📖 Project Overview
 This is a Flutter-based mobile application I developed for Agriculture Company, one of Indonesia's largest state-owned plantation enterprises. The application was designed to digitize monitoring and reporting processes in the plantation sector that were previously performed manually, resulting in operational inefficiencies and difficulties in data-driven decision making.
 

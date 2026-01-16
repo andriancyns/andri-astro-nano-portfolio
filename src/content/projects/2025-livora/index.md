@@ -11,6 +11,20 @@ demoURL: "https://livora.netlify.app/"
 > **Status:** ✅ This project is **complete** and **live**.  
 > You can explore the live demo here: <a href="https://livora.netlify.app/" target="_blank" rel="noopener noreferrer">livora.netlify.app</a>
 
+## 🎯 Business Context & Goals
+- Showcase a modern, high-end furniture shopping experience for web visitors.
+- Demonstrate how a clean, performant React storefront can support conversion-focused e-commerce.
+- Provide a reference implementation for future furniture or lifestyle brands.
+
+## 🧩 My Role & Responsibilities
+- Worked as Frontend Developer within a small team to deliver the web experience.
+- Implemented the UI, routing, and responsive behavior using React and Tailwind CSS.
+- Focused on performance and accessibility to ensure a smooth shopping journey.
+
+## 📊 Impact & Outcomes
+- Delivered a visually polished, responsive storefront suitable for production scenarios.
+- Achieved excellent Lighthouse scores across performance, accessibility, and best practices.
+- Reusable patterns from Livora can be applied to other e-commerce clients and verticals.
 
 Livora is a sophisticated e-commerce web application built with modern web technologies, focusing on furniture and home decor products. The project demonstrates expertise in frontend development using cutting-edge technologies and best practices.
 

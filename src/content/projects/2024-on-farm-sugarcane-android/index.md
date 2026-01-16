@@ -20,6 +20,21 @@ As Android developer, I was fully responsible for the redesign and feature expan
 > **Note:**  
 > TMA Tebu stands for **Tebang Muat Angkut Tebu** (Sugarcane Harvest, Load, and Transport). This module is designed to manage and optimize the entire process of harvesting, loading, and transporting sugarcane within the plantation.
 
+## 🎯 Business Context & Goals
+- Part of an enterprise OSS Planters system used by plantation operators.
+- Improve control and visibility over sugarcane harvesting, loading, and transport.
+- Reduce errors and delays caused by legacy interfaces and fragmented workflows.
+
+## 🧩 My Role & Responsibilities
+- Owned the redesign and implementation of the module from UX to code.
+- Partnered with field operators to understand edge cases and operational constraints.
+- Ensured the module remained usable in low-connectivity environments.
+
+## 📊 Impact & Outcomes
+- Delivered a more intuitive TMA workflow that improved daily usability for field teams.
+- Helped supervisors monitor activities and performance with better reporting tools.
+- Contributed to more reliable, timely data flowing into upstream plantation systems.
+
 ## My Role & Responsibilities
 - Led the complete redesign of the module, including UI/UX, architecture, and workflow improvements.
 - Expanded the feature set to address operational requirements and increase productivity.

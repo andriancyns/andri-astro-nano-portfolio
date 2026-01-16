@@ -11,6 +11,21 @@ demoURL: "https://siaperkara.jiwakreator.com/"
 > **Status:** ✅ This project is **complete** and **live**.  
 > You can explore the live demo here: <a href="https://siaperkara.jiwakreator.com/" target="_blank" rel="noopener noreferrer">siaperkara.jiwakreator.com</a>
 
+## 🎯 Business Context & Goals
+- Built for a military high court that previously relied on manual, fragmented archive processes.
+- Digitize and secure case decision archives to support transparency and compliance.
+- Enable fast, reliable access to decisions for internal users and public services.
+
+## 🧩 My Role & Responsibilities
+- Designed and implemented the full stack: backend, admin panel, and frontend.
+- Modeled the archive domain and user roles to reflect real court workflows.
+- Implemented security controls aligned with the sensitivity of judicial data.
+
+## 📊 Impact & Outcomes
+- Greatly reduced the time needed to locate and retrieve case decisions.
+- Improved data integrity and security for long-term archive preservation.
+- Strengthened institutional transparency and public service quality.
+
 LegalSafe is a modern digital archive management system developed for the Military High Court III Surabaya. This system automates and optimizes the management of case decision archives, improving operational efficiency and public service transparency.
 
 ## 💻 Tech Stack

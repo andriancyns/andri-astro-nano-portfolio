@@ -7,28 +7,28 @@ import { SERVICES } from "@consts";
 
 const services = [
   {
-    icon: "📱",
+    icon: "fa-solid fa-mobile-screen-button",
     title: "Mobile App Development",
     description: "Native and cross-platform mobile applications built with Flutter, Android (Kotlin/Java), delivering smooth performance and great user experience.",
     features: ["Flutter (iOS & Android)", "Native Android (Kotlin/Java)", "API Integration", "Offline-First Architecture", "Push Notifications"],
     price: "Starting from $500"
   },
   {
-    icon: "⚙️",
+    icon: "fa-solid fa-server",
     title: "Backend Development",
     description: "Scalable, secure, and maintainable backend systems. RESTful APIs, microservices, and database design that power your applications.",
     features: ["Go / Laravel / Node.js", "RESTful & GraphQL APIs", "Database Design (PostgreSQL, MySQL)", "Authentication & Authorization", "Cloud Deployment (AWS, GCP)"],
     price: "Starting from $250"
   },
   {
-    icon: "🌐",
+    icon: "fa-solid fa-globe",
     title: "Web Development",
     description: "Modern, fast, and SEO-optimized websites. From landing pages to full-stack web applications with great performance.",
     features: ["React / Next.js / Astro", "Responsive Design", "SEO Optimization", "Performance Tuning", "CMS Integration"],
     price: "Starting from $250"
   },
   {
-    icon: "🔧",
+    icon: "fa-solid fa-screwdriver-wrench",
     title: "Technical Consultation",
     description: "Expert advice on architecture, technology stack, code review, and best practices. Help you make informed technical decisions.",
     features: ["Architecture Review", "Code Audit", "Technology Stack Selection", "Performance Optimization", "Security Assessment"],
@@ -63,10 +63,16 @@ const process = [
         </p>
         <div class="flex gap-4 pt-2">
           <Link href="mailto:andriancyns@gmail.com" external>
-            📧 Get in Touch
+            <span class="inline-flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-sm"></i>
+              <span>Get in Touch</span>
+            </span>
           </Link>
           <Link href="/projects">
-            📂 View My Work
+            <span class="inline-flex items-center gap-2">
+              <i class="fa-solid fa-briefcase text-sm"></i>
+              <span>View My Work</span>
+            </span>
           </Link>
         </div>
       </section>
@@ -79,7 +85,9 @@ const process = [
         <div class="grid gap-6 md:grid-cols-2">
           {services.map((service) => (
             <div class="p-6 border border-black/10 dark:border-white/10 rounded-lg hover:border-black/25 dark:hover:border-white/25 transition-colors">
-              <div class="text-3xl mb-3">{service.icon}</div>
+              <div class="text-3xl mb-3">
+                <i class={`fa-fw ${service.icon}`}></i>
+              </div>
               <h3 class="text-xl font-semibold text-black dark:text-white mb-2">
                 {service.title}
               </h3>

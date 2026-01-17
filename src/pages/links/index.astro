@@ -2,10 +2,9 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import { SITE } from "@consts";
 
-// Digital Products - Edit this array to add/remove products
 const products = [
   {
-    icon: "🎨",
+    icon: "fa-solid fa-palette",
     name: "Borobudur Learning - AI Powered EdTech Landing Page",
     description: "Premium Astro + React template with integrated AI features.",
     price: "$6",
@@ -14,7 +13,7 @@ const products = [
       {
         platform: "Gumroad",
         url: "https://studiokoma.gumroad.com/l/borobudur-learning",
-        icon: "🛒",
+        icon: "fa-solid fa-cart-shopping",
       },
     ],
   },
@@ -56,10 +55,10 @@ const products = [
 ];
 
 const socials = [
-  { name: "GitHub", link: "https://github.com/andriancyns", icon: "🐙" },
-  { name: "LinkedIn", link: "https://linkedin.com/in/andriancyns", icon: "💼" },
-  { name: "Email", link: "mailto:andriancyns@gmail.com", icon: "📧" },
-  { name: "WhatsApp", link: "https://wa.me/62816663942", icon: "💬" },
+  { name: "GitHub", link: "https://github.com/andriancyns", icon: "fa-brands fa-github" },
+  { name: "LinkedIn", link: "https://linkedin.com/in/andriancyns", icon: "fa-brands fa-linkedin-in" },
+  { name: "Email", link: "mailto:andriancyns@gmail.com", icon: "fa-solid fa-envelope" },
+  { name: "WhatsApp", link: "https://wa.me/62816663942", icon: "fa-brands fa-whatsapp" },
 ];
 ---
 
@@ -85,7 +84,7 @@ const socials = [
         <div
           class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-2xl shadow-lg shadow-green-500/20"
         >
-          👨‍💻
+          <i class="fa-solid fa-code"></i>
         </div>
         <div>
           <h1 class="text-lg font-bold text-black dark:text-white">
@@ -116,7 +115,7 @@ const socials = [
                 >
                   <div class="flex items-center gap-3 p-3">
                     <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-lg flex-shrink-0">
-                      {product.icon}
+                      <i class={`fa-fw ${product.icon}`}></i>
                     </div>
                     <div class="flex-1 min-w-0">
                       <div class="flex items-center gap-1.5">
@@ -167,7 +166,7 @@ const socials = [
                   <div class="product-header" data-toggle>
                     <div class="flex items-center gap-3 p-3">
                       <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-lg flex-shrink-0">
-                        {product.icon}
+                        <i class={`fa-fw ${product.icon}`}></i>
                       </div>
                       <div class="flex-1 min-w-0">
                         <div class="flex items-center gap-1.5">
@@ -217,7 +216,9 @@ const socials = [
                           rel="noopener noreferrer"
                           class="platform-btn"
                         >
-                          <span>{link.icon}</span>
+                          <span>
+                            <i class={`fa-fw ${link.icon}`}></i>
+                          </span>
                           <span>{link.platform}</span>
                         </a>
                       ))}
@@ -247,7 +248,9 @@ const socials = [
                 class="social-btn"
                 title={social.name}
               >
-                <span class="text-lg">{social.icon}</span>
+                <span class="text-lg">
+                  <i class={`fa-fw ${social.icon}`}></i>
+                </span>
               </a>
             ))
           }

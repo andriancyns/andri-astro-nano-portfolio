@@ -3,6 +3,7 @@ title: "On Farm TMA Tebu Module – OSS Planters (Android)"
 description: "This module is designed to manage and optimize the entire process of harvesting, loading, and transporting sugarcane within the plantation."
 date: "May 2024"
 draft: false
+status: "completed"
 demoURL: "https://play.google.com/store/apps/details?id=com.ptpn12.oss&hl=en"
 ---
 

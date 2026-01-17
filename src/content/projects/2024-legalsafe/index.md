@@ -3,6 +3,7 @@ title: "LegalSafe - Case Archive Information System"
 description: "LegalSafe is a modern digital archive management system developed for the Military High Court III Surabaya. This system automates and optimizes the management of case decision archives, improving operational efficiency and public service transparency."
 date: "2024-11-11"
 draft: false
+status: "completed"
 demoURL: "https://siaperkara.jiwakreator.com/"
 ---
 

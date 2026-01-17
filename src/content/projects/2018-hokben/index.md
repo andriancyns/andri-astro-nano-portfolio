@@ -3,6 +3,7 @@ title: "Hoka-Hoka Bento (HokBen) - Inventory Management System"
 description: "A web-based inventory management system for Hoka-Hoka Bento restaurants in Surabaya."
 date: "2018"
 draft: false
+status: "completed"
 ---
 
 ![Hoka-Hoka Bento Inventory Management System](/2018-hokben.png)

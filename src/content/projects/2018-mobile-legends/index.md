@@ -3,6 +3,7 @@ title: "Mobile Legends Win Prediction App Using Naive Bayes Method"
 description: "A web platform for organizing and managing Mobile Legends tournaments."
 date: "2018"
 draft: false
+status: "completed"
 ---
 
 ![Mobile Legends Win Prediction System](/mobile-legends-thumb.png)

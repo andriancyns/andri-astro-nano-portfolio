@@ -3,7 +3,7 @@ title: "Borobudur Learning - AI Powered EdTech Landing Page"
 description: "A beautifully crafted, production-ready education platform template that combines modern web technology with AI-powered features. Perfect for educators, course creators, EdTech startups, or anyone looking to launch an online learning business."
 date: "2026-01-11"
 draft: false
-status: "ongoing"
+status: "completed"
 # demoURL: "https://borobudur-learning.vercel.app"
 # repoURL: "https://github.com/andriancyns/andri-astro-nano-portfolio"
 ---
